@@ -97,7 +97,7 @@ class galaxy-roles-profiles::profile::common ($config = 'void'){
     galaxy::universe{ 'production':
       directory => hiera('galaxy-roles-profiles::profile::app_directory'),
       id_secret => hiera('galaxy-roles-profiles::profile::id_secret'),
-      db_config => false,
+      wk_config => true,
     }
   }
   elsif $config == 'multicore_database'{
@@ -113,6 +113,7 @@ class galaxy-roles-profiles::profile::common ($config = 'void'){
     galaxy::universe{ 'production':
       directory            => hiera('galaxy-roles-profiles::profile::app_directory'),
       id_secret            => hiera('galaxy-roles-profiles::profile::id_secret'),
+      wk_config            => true,
       db_config            => true,
       db_driver            => hiera('galaxy-roles-profiles::profile::common::db_driver'),
       db_host              => hiera('galaxy-roles-profiles::profile::common::db_host'),
@@ -127,7 +128,11 @@ class galaxy-roles-profiles::profile::common ($config = 'void'){
   else{
     class{ 'galaxy-roles-profiles::profile::base':
     }->
-    galaxy::service{'service':
+    galaxy::universe{ 'production':
+      directory => hiera('galaxy-roles-profiles::profile::app_directory'),
+      id_secret => hiera('galaxy-roles-profiles::profile::id_secret'),    
+    }->
+    galaxy::service{ 'service':
       directory => hiera('galaxy-roles-profiles::profile::app_directory'),
     }
   }
