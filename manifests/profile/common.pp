@@ -125,15 +125,19 @@ class galaxy-roles-profiles::profile::common ($config = 'void'){
       db_database          => hiera ('galaxy-roles-profiles::profile::db_database'),
     }
   }
-  else{
+  elsif $config == 'onecore'{
     class{ 'galaxy-roles-profiles::profile::base':
     }->
     galaxy::universe{ 'production':
       directory => hiera('galaxy-roles-profiles::profile::app_directory'),
-      id_secret => hiera('galaxy-roles-profiles::profile::id_secret'),    
+      id_secret => hiera('galaxy-roles-profiles::profile::id_secret'),
     }->
     galaxy::service{ 'service':
       directory => hiera('galaxy-roles-profiles::profile::app_directory'),
     }
+  }
+  else {
+    #notify{"param config is :  $config . config have to be onecore | multicore | multicore_database": }
+    err ( "param config is :  $config . config have to be onecore | multicore | multicore_database")  
   }
 }
