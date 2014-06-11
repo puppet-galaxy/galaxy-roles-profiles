@@ -1,4 +1,4 @@
-# == Class galaxy-roles-profiles::role::basic
+# == Class galaxy-roles-profiles::role::multicore
 # This role create one instance of galaxy with multicore configuration.
 # That means Galaxy runs with several cores and with SQLite.
 #
