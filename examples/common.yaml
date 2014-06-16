@@ -1,4 +1,5 @@
 # Sample for Hiear config.
+#
 galaxy-roles-profiles::profile::create_user : true
 galaxy-roles-profiles::profile::home_directory : /home/galaxy
 galaxy-roles-profiles::profile::app_directory : /home/galaxy/galaxy-dist
@@ -15,3 +16,6 @@ galaxy-roles-profiles::profile::common::db_host : 'localhost'
 galaxy-roles-profiles::profile::common::db_port : 5432
 galaxy-roles-profiles::profile::common::db_opts_pool_size : 500
 galaxy-roles-profiles::profile::common::db_opts_max_overflow : 1000
+galaxy-roles-profiles::profile::common::number_of_workers: 2
+galaxy-roles-profiles::profile::common::number_of_handlers: 2
+
