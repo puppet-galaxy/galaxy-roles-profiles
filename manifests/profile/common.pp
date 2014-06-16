@@ -95,9 +95,11 @@ class galaxy-roles-profiles::profile::common ($config = 'void'){
       directory => hiera('galaxy-roles-profiles::profile::app_directory'),
     }->
     galaxy::universe{ 'production':
-      directory => hiera('galaxy-roles-profiles::profile::app_directory'),
-      id_secret => hiera('galaxy-roles-profiles::profile::id_secret'),
-      wk_config => true,
+      directory                    => hiera('galaxy-roles-profiles::profile::app_directory'),
+      id_secret                    => hiera('galaxy-roles-profiles::profile::id_secret'),
+      wk_config                    => true,
+      number_of_background_workers => hiera('galaxy-roles-profiles::profile::common::number_of_workers'),
+      number_of_web_workers        => hiera('galaxy-roles-profiles::profile::common::number_of_workers'),
     }
   }
   elsif $config == 'multicore_database'{
@@ -111,18 +113,20 @@ class galaxy-roles-profiles::profile::common ($config = 'void'){
       directory => hiera('galaxy-roles-profiles::profile::app_directory'),
     }->
     galaxy::universe{ 'production':
-      directory            => hiera('galaxy-roles-profiles::profile::app_directory'),
-      id_secret            => hiera('galaxy-roles-profiles::profile::id_secret'),
-      wk_config            => true,
-      db_config            => true,
-      db_driver            => hiera('galaxy-roles-profiles::profile::common::db_driver'),
-      db_host              => hiera('galaxy-roles-profiles::profile::common::db_host'),
-      db_port              => hiera('galaxy-roles-profiles::profile::common::db_port'),
-      db_opts_pool_size    => hiera('galaxy-roles-profiles::profile::common::db_opts_pool_size'),
-      db_opts_max_overflow => hiera('galaxy-roles-profiles::profile::common::db_opts_max_overflow'),
-      db_username          => hiera('galaxy-roles-profiles::profile::db_username'),
-      db_password          => hiera('galaxy-roles-profiles::profile::db_password'),
-      db_database          => hiera ('galaxy-roles-profiles::profile::db_database'),
+      directory                    => hiera('galaxy-roles-profiles::profile::app_directory'),
+      id_secret                    => hiera('galaxy-roles-profiles::profile::id_secret'),
+      wk_config                    => true,
+      db_config                    => true,
+      db_driver                    => hiera('galaxy-roles-profiles::profile::common::db_driver'),
+      db_host                      => hiera('galaxy-roles-profiles::profile::common::db_host'),
+      db_port                      => hiera('galaxy-roles-profiles::profile::common::db_port'),
+      db_opts_pool_size            => hiera('galaxy-roles-profiles::profile::common::db_opts_pool_size'),
+      db_opts_max_overflow         => hiera('galaxy-roles-profiles::profile::common::db_opts_max_overflow'),
+      db_username                  => hiera('galaxy-roles-profiles::profile::db_username'),
+      db_password                  => hiera('galaxy-roles-profiles::profile::db_password'),
+      db_database                  => hiera ('galaxy-roles-profiles::profile::db_database'),
+      number_of_background_workers => hiera('galaxy-roles-profiles::profile::common::number_of_workers'),
+      number_of_web_workers        => hiera('galaxy-roles-profiles::profile::common::number_of_workers'),
     }
   }
   elsif $config == 'onecore'{
@@ -137,7 +141,6 @@ class galaxy-roles-profiles::profile::common ($config = 'void'){
     }
   }
   else {
-    #notify{"param config is :  $config . config have to be onecore | multicore | multicore_database": }
-    err ( "param config is :  $config . config have to be onecore | multicore | multicore_database")  
+        err ( "param config is :  $config . config have to be onecore | multicore | multicore_database")
   }
 }
