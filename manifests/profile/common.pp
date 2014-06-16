@@ -125,7 +125,7 @@ class galaxy-roles-profiles::profile::common ($config = 'void'){
       db_username                  => hiera('galaxy-roles-profiles::profile::db_username'),
       db_password                  => hiera('galaxy-roles-profiles::profile::db_password'),
       db_database                  => hiera ('galaxy-roles-profiles::profile::db_database'),
-      number_of_background_workers => hiera('galaxy-roles-profiles::profile::common::number_of_workers'),
+      number_of_background_workers => hiera('galaxy-roles-profiles::profile::common::number_of_handlers'),
       number_of_web_workers        => hiera('galaxy-roles-profiles::profile::common::number_of_workers'),
     }
   }
