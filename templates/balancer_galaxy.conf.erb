@@ -3,7 +3,8 @@
 #
 #
 # ----Balancer Members----
-"Proxy balancer://<%@balancer_name%>\n"
+<Proxy balancer://galaxy>
 <% for i in @number_of_web_workers_array do %>
-	"BalancerMember http://localhost:<%= @webworker_starting_port_number.to_i + i %>\n"
+BalancerMember http://localhost:<%= @webworker_starting_port_number.to_i + i %>
 <% end %>
+</Proxy>
