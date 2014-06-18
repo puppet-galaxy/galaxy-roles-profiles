@@ -3,6 +3,7 @@
 # That means Galaxy runs with several cores and with SQLite.
 #
 # ==== Examples
+#
 # include galaxy-roles-profiles::role::multicore
 #
 # === Authors
@@ -13,9 +14,13 @@
 # === Copyright
 #
 # Copyright 2014, unless otherwise noted.
+#
 class galaxy-roles-profiles::role::multicore(){
-  class{ 'galaxy-roles-profiles::profile::common':
+  class { 'galaxy-roles-profiles::profile::common':
     config => 'multicore',
   }->
-  class {'galaxy-roles-profiles::profile::webapp':}
+  class { 'galaxy::upgrade-database':
+  }->
+  class {'galaxy-roles-profiles::profile::webapp':
+  }
 }
