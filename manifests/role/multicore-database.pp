@@ -14,9 +14,13 @@
 #
 #
 class galaxy-roles-profiles::role::multicore-database(){
-  class{ 'galaxy-roles-profiles::profile::common':
+  class { 'galaxy-roles-profiles::profile::common':
     config => 'multicore_database',
   }->
-  class{ 'galaxy-roles-profiles::profile::database': }
-	class{ 'galaxy-roles-profiles::profile::webapp':}
- }
+  class { 'galaxy-roles-profiles::profile::database': 
+  }->
+  class { 'galaxy::upgrade-database':
+  }->
+  class { 'galaxy-roles-profiles::profile::webapp':
+  }
+}
