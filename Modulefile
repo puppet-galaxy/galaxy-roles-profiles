@@ -10,4 +10,5 @@ project_page 'UNKNOWN'
 ## Add dependencies, if any:
 # dependency 'username/name', '>= 1.2.0'
 dependency  'urgi/galaxy' , '>=0.0.2'
-dependency  'puppet/postgresql' , '>=3.3.3'
+dependency  'puppetlabs/postgresql' , '>=3.3.3'
+dependency 'puppetlabs/apache , '>=1.0.1'
