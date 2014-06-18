@@ -12,6 +12,12 @@
 # By default, $config is one core.
 #
 # Parameters set by Hiera:
+# [*galaxy-roles-profiles::number_of_workers*]
+# Set the number of web workers.
+#
+# [*galaxy-roles-profiles::profile::common::number_of_handlers*]
+# Set the number of background workers.
+#
 # [*galaxy-roles-profiles::profile::create_user*]
 # If enabled allows a new galaxy user creation.
 #
@@ -32,8 +38,8 @@
 # used by the algorithm that encodes and decodes these values. It can be any
 # string. If left unchanged, anyone could construct a cookie that would
 # grant them access to others' sessions.
-#
 # (Tip: use `openssl rand -hex 32` to generate one)
+#
 # [*galaxy-roles-profiles::profile::galaxy_branch*]
 # Which branch of galaxy's development to pull from. Options are "stable" and
 # "default", where default is the primary branch for development work
@@ -98,8 +104,8 @@ class galaxy-roles-profiles::profile::common ($config = 'void'){
       directory                    => hiera('galaxy-roles-profiles::profile::app_directory'),
       id_secret                    => hiera('galaxy-roles-profiles::profile::id_secret'),
       wk_config                    => true,
-      number_of_background_workers => hiera('galaxy-roles-profiles::profile::common::number_of_workers'),
-      number_of_web_workers        => hiera('galaxy-roles-profiles::profile::common::number_of_workers'),
+      number_of_background_workers => hiera('galaxy-roles-profiles::profile::common::number_of_handlers'),
+      number_of_web_workers        => hiera('galaxy-roles-profiles::number_of_workers'),
     }
   }
   elsif $config == 'multicore_database'{
@@ -126,7 +132,7 @@ class galaxy-roles-profiles::profile::common ($config = 'void'){
       db_password                  => hiera('galaxy-roles-profiles::profile::db_password'),
       db_database                  => hiera ('galaxy-roles-profiles::profile::db_database'),
       number_of_background_workers => hiera('galaxy-roles-profiles::profile::common::number_of_handlers'),
-      number_of_web_workers        => hiera('galaxy-roles-profiles::profile::common::number_of_workers'),
+      number_of_web_workers        => hiera('galaxy-roles-profiles::number_of_workers'),
     }
   }
   elsif $config == 'onecore'{
