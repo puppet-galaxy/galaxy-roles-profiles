@@ -18,5 +18,7 @@
 class galaxy-roles-profiles::role::basic(){
   class { 'galaxy-roles-profiles::profile::common':
     config => 'onecore',
+  }->
+  class { 'galaxy::upgrade-database':
   }
 }
