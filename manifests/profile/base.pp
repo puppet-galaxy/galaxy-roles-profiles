@@ -2,6 +2,8 @@
 #
 # This class manage basic operations for profile construction.
 #
+# === Parameters
+#
 # Parameters set by Hiera:
 # [*galaxy-roles-profiles::profile::create_user*]
 # If enabled allows a new galaxy user creation.
@@ -16,13 +18,13 @@
 # Which branch of galaxy's development to pull from. Options are "stable" and
 # "default", where default is the primary branch for development work.
 #
-# ==== Examples
+# === Examples
 #
 #   if hiera('galaxy-roles-profiles::profile::common::core') == 'one'{
 #    class{ 'galaxy-roles-profiles::profile::base':
 #   }-> ...
 #
-# # === Authors
+# === Authors
 #
 # O. Inizan <oinizan@versailles.inra.fr>
 # Eric Rasche <rasche.eric@yandex.ru>
