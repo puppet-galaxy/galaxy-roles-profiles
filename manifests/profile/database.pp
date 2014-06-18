@@ -2,7 +2,9 @@
 #
 # Database profile to build one database for PostgreSQL.
 # See https://forge.puppetlabs.com/puppetlabs/postgresql/3.3.3 for more information
+#
 # === Parameter
+#
 # All are sets by Hiera
 # [*galaxy-roles-profiles::profile::db_username*]
 # Username to connect to database with. It is recommend you create a separate user for galaxy. We recommend use of the puppetlabs database modules to manage database users.
