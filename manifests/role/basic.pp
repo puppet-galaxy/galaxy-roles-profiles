@@ -10,7 +10,7 @@
 #
 # O. Inizan <oinizan@versailles.inra.fr>
 # S. Bridel <sbridel@versailles.inra.fr>
-#
+# M. Loaec <mloaec@versailles.inra.fr>
 # === Copyright
 #
 # Copyright 2014, unless otherwise noted.
