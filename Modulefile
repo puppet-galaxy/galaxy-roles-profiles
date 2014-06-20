@@ -1,5 +1,5 @@
 name    'urgi/galaxy-roles-profiles'
-version '0.1.0'
+version '0.0.1'
 author 'urgi'
 license 'Apache License, Version 2.0'
 description 'A module to manage profiles and roles for Galaxy'
