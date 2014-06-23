@@ -1,7 +1,7 @@
 # Sample for Hiear config.
 #
 #
-galaxy-roles-profiles:number_of_workers: 2
+galaxy-roles-profiles::number_of_workers: 2
 
 galaxy-roles-profiles::profile::create_user : true
 galaxy-roles-profiles::profile::home_directory : '/home/galaxy'
