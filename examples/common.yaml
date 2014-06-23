@@ -21,4 +21,4 @@ galaxy-roles-profiles::profile::common::db_opts_pool_size : 500
 galaxy-roles-profiles::profile::common::db_opts_max_overflow : 1000
 galaxy-roles-profiles::profile::common::number_of_handlers: 2
 
-galaxy-roles-profiles::profile::webapp:port : 8080
+galaxy-roles-profiles::profile::webapp::port : 8080
