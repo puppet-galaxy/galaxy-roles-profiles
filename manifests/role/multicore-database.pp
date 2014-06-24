@@ -13,7 +13,7 @@
 # Copyright 2014, unless otherwise noted.
 #
 #
-class galaxy-roles-profiles::role::multicore-database(){
+class galaxy_roles_profiles::role::multicore-database(){
   class { 'galaxy-roles-profiles::profile::database':
   }->
   class { 'galaxy-roles-profiles::profile::common':
