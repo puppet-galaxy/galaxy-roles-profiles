@@ -33,11 +33,11 @@ class galaxy_roles_profiles::profile::webapp(){
       {
           comment      =>'Rules for Galaxy in loadbalancing mode',
           rewrite_rule =>'^/static/style/(.*) /home/galaxy/galaxy-dist/static/june_2007_style/blue/$1 [L]
-  RewriteRule ^/static/scripts/(.*) /home/galaxy/galaxy-dist/static/scripts/packed/$1 [L]
-  RewriteRule ^/static/(.*) /home/galaxy/galaxy-dist/static/$1 [L]
-  RewriteRule ^/favicon.ico /home/galaxy/galaxy-dist/static/favicon.ico [L]
-  RewriteRule ^/robots.txt /home/galaxy/galaxy-dist/static/robots.txt [L]
-  RewriteRule ^(.*) balancer://galaxy$1 [P]',
+   ^/static/scripts/(.*) /home/galaxy/galaxy-dist/static/scripts/packed/$1 [L]
+   ^/static/(.*) /home/galaxy/galaxy-dist/static/$1 [L]
+   ^/favicon.ico /home/galaxy/galaxy-dist/static/favicon.ico [L]
+   ^/robots.txt /home/galaxy/galaxy-dist/static/robots.txt [L]
+   ^(.*) balancer://galaxy$1 [P]',
       },
     ]
   }
