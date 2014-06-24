@@ -33,7 +33,7 @@
 #
 # Copyright 2014, unless otherwise noted.
 #
-class galaxy-roles-profiles::profile::base(){
+class galaxy_roles_profiles::profile::base(){
   class { 'galaxy':
     create_user => hiera('galaxy-roles-profiles::profile::create_user'),
     directory   => hiera('galaxy-roles-profiles::profile::home_directory'),
