@@ -1,10 +1,10 @@
-# == Class galaxy-roles-profiles::role::multicore
+# == Class galaxy_roles_profiles::role::multicore
 # This role create one instance of galaxy with multicore configuration.
 # That means Galaxy runs with several cores and with SQLite.
 #
 # ==== Examples
 #
-# include galaxy-roles-profiles::role::multicore
+# include galaxy_roles_profiles::role::multicore
 #
 # === Authors
 #
@@ -16,9 +16,9 @@
 # Copyright 2014, unless otherwise noted.
 #
 class galaxy_roles_profiles::role::multicore(){
-  class { 'galaxy-roles-profiles::profile::common':
+  class { 'galaxy_roles_profiles::profile::common':
     config => 'multicore',
   }->
-  class {'galaxy-roles-profiles::profile::webapp':
+  class {'galaxy_roles_profiles::profile::webapp':
   }
 }
