@@ -1,24 +1,24 @@
 # Sample for Hiear config.
 #
 #
-galaxy-roles-profiles::number_of_workers: 2
+galaxy_roles_profiles::number_of_workers: 2
 
-galaxy-roles-profiles::profile::create_user : true
-galaxy-roles-profiles::profile::home_directory : '/home/galaxy'
-galaxy-roles-profiles::profile::app_directory : '/home/galaxy/galaxy-dist'
-galaxy-roles-profiles::profile::galaxy_branch : 'stable'
-galaxy-roles-profiles::profile::custom_toolsheds : []
-galaxy-roles-profiles::profile::id_secret : 'secret'
+galaxy_roles_profiles::profile::create_user : true
+galaxy_roles_profiles::profile::home_directory : '/home/galaxy'
+galaxy_roles_profiles::profile::app_directory : '/home/galaxy/galaxy-dist'
+galaxy_roles_profiles::profile::galaxy_branch : 'stable'
+galaxy_roles_profiles::profile::custom_toolsheds : []
+galaxy_roles_profiles::profile::id_secret : 'secret'
 
-galaxy-roles-profiles::profile::db_database : 'galaxy-db'
-galaxy-roles-profiles::profile::db_username : 'galaxy'
-galaxy-roles-profiles::profile::db_password : 'toto'
+galaxy_roles_profiles::profile::db_database : 'galaxy-db'
+galaxy_roles_profiles::profile::db_username : 'galaxy'
+galaxy_roles_profiles::profile::db_password : 'toto'
 
-galaxy-roles-profiles::profile::common::db_driver : 'postgresql'
-galaxy-roles-profiles::profile::common::db_host : 'localhost'
-galaxy-roles-profiles::profile::common::db_port : 5432
-galaxy-roles-profiles::profile::common::db_opts_pool_size : 500
-galaxy-roles-profiles::profile::common::db_opts_max_overflow : 1000
-galaxy-roles-profiles::profile::common::number_of_handlers: 2
+galaxy_roles_profiles::profile::common::db_driver : 'postgresql'
+galaxy_roles_profiles::profile::common::db_host : 'localhost'
+galaxy_roles_profiles::profile::common::db_port : 5432
+galaxy_roles_profiles::profile::common::db_opts_pool_size : 500
+galaxy_roles_profiles::profile::common::db_opts_max_overflow : 1000
+galaxy_roles_profiles::profile::common::number_of_handlers: 2
 
-galaxy-roles-profiles::profile::webapp::port : 8080
+galaxy_roles_profiles::profile::webapp::port : 8080
