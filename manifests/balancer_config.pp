@@ -1,4 +1,4 @@
-# == Class: galaxy-roles-profiles::profile::base
+# == Class: galaxy-roles-profiles::balancer-config
 #
 # This class write the file balancer_galaxy.conf with all the balancer members.
 #
