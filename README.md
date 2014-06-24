@@ -28,6 +28,18 @@ It uses base blocks hosted in the Galaxy module: https://forge.puppetlabs.com/ur
 * Manage configurations files
 * Enable apache
  * see https://forge.puppetlabs.com/puppetlabs/apache for further information
+###First step
+How to install existing role:
+
+```puppet
+	include galaxy-roles-profiles::role::<the role wich you want>
+```
+##Available Roles 
+
+###Role galaxy-roles-profiles::role::basic
+```puppet
+	include galaxy-roles-profiles::role::basic
+```
 
 ##Github projects
 Projects for base blocks and roles+profiles are hosted on github:
