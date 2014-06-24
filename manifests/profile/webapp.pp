@@ -21,7 +21,7 @@
 #
 class galaxy-roles-profiles::profile::webapp(){
   include apache
-  include apache::proxy
+  include apache::mod::proxy
   include apache::mod::proxy_balancer
   include apache::mod::rewrite
   include galaxy-roles-profiles::balancer_config
