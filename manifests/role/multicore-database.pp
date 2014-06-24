@@ -1,4 +1,4 @@
-# == Class: galaxy-roles-profiles::role::multicore-database
+# == Class: galaxy_roles_profiles::role::multicore-database
 #
 # A role to build a multicore web server plugged on a
 # postgresql database.
@@ -14,11 +14,11 @@
 #
 #
 class galaxy_roles_profiles::role::multicore-database(){
-  class { 'galaxy-roles-profiles::profile::database':
+  class { 'galaxy_roles_profiles::profile::database':
   }->
-  class { 'galaxy-roles-profiles::profile::common':
+  class { 'galaxy_roles_profiles::profile::common':
     config => 'multicore_database',
   }->
-  class { 'galaxy-roles-profiles::profile::webapp':
+  class { 'galaxy_roles_profiles::profile::webapp':
   }
 }
