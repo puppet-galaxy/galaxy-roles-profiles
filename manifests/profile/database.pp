@@ -29,10 +29,16 @@ class galaxy_roles_profiles::profile::database(){
   $db_database = hiera ('galaxy_roles_profiles::profile::db_database')
   $db_user     = hiera('galaxy_roles_profiles::profile::db_username')
   $db_pd = hiera('galaxy_roles_profiles::profile::db_password')
-
+  $directory = $galaxy::params::directory
   class { 'postgresql::server': }
   postgresql::server::db { $db_database :
     user     => $db_user ,
     password => postgresql_password( $db_user, $db_pd ),
-  }
+  }->
+  exec { 'Migration Postgresql database':
+    path => '/usr/bin:/usr/sbin:/bin:/sbin',
+    cwd => $directory,
+    user => 'galaxy',
+    command => "sh manage_db.sh upgrade",
+  } 
 }
