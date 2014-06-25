@@ -29,15 +29,17 @@ class galaxy_roles_profiles::profile::webapp(){
   apache::vhost{ 'galaxy.test':
     port     => hiera('galaxy_roles_profiles::profile::webapp::port'),
     docroot  => '/var/www/galaxy',
-    rewrites =>[
+    rewrites =>
+    [
       {
-          comment      =>'Rules for Galaxy in loadbalancing mode',
-          rewrite_rule =>'^/static/style/(.*) /home/galaxy/galaxy-dist/static/june_2007_style/blue/$1 [L]
-   ^/static/scripts/(.*) /home/galaxy/galaxy-dist/static/scripts/packed/$1 [L]
-   ^/static/(.*) /home/galaxy/galaxy-dist/static/$1 [L]
-   ^/favicon.ico /home/galaxy/galaxy-dist/static/favicon.ico [L]
-   ^/robots.txt /home/galaxy/galaxy-dist/static/robots.txt [L]
-   ^(.*) balancer://galaxy$1 [P]',
+        comment      => 'Rules for Galaxy in loadbalancing mode',
+        rewrite_rule => [ '^/static/style/(.*) /home/galaxy/galaxy-dist/static/june_2007_style/blue/$1 [L]',
+                          '^/static/scripts/(.*) /home/galaxy/galaxy-dist/static/scripts/packed/$1 [L]',
+                          '^/static/(.*) /home/galaxy/galaxy-dist/static/$1 [L]',
+                          '^/favicon.ico /home/galaxy/galaxy-dist/static/favicon.ico [L]',
+                          '^/robots.txt /home/galaxy/galaxy-dist/static/robots.txt [L]',
+                          '^(.*) balancer://galaxy$1 [P]',
+                        ] 
       },
     ]
   }
