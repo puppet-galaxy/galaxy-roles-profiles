@@ -1,6 +1,7 @@
-# Sample for Hiear config.
-#
-#
+# Sample for Hiera config.
+# Ready to use:
+# -cp in the /var/lib/hiera/
+# -modify hiera.yaml 
 galaxy_roles_profiles::number_of_workers: 2
 
 galaxy_roles_profiles::profile::create_user : true
