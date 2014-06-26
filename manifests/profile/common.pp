@@ -101,6 +101,7 @@ class galaxy_roles_profiles::profile::common ($config = 'void'){
       directory => hiera('galaxy_roles_profiles::profile::app_directory'),
     }->
     galaxy::universe{ 'production':
+      require_login                => false,
       directory                    => hiera('galaxy_roles_profiles::profile::app_directory'),
       id_secret                    => hiera('galaxy_roles_profiles::profile::id_secret'),
       wk_config                    => true,
@@ -119,6 +120,7 @@ class galaxy_roles_profiles::profile::common ($config = 'void'){
       directory => hiera('galaxy_roles_profiles::profile::app_directory'),
     }->
     galaxy::universe{ 'production':
+      require_login                => false,
       directory                    => hiera('galaxy_roles_profiles::profile::app_directory'),
       id_secret                    => hiera('galaxy_roles_profiles::profile::id_secret'),
       wk_config                    => true,
@@ -139,8 +141,9 @@ class galaxy_roles_profiles::profile::common ($config = 'void'){
     class { 'galaxy_roles_profiles::profile::base':
     }->
     galaxy::universe{ 'production':
-      directory => hiera('galaxy_roles_profiles::profile::app_directory'),
-      id_secret => hiera('galaxy_roles_profiles::profile::id_secret'),
+      require_login => false,
+      directory     => hiera('galaxy_roles_profiles::profile::app_directory'),
+      id_secret     => hiera('galaxy_roles_profiles::profile::id_secret'),
     }-> 
     galaxy::service{ 'service':
       directory => hiera('galaxy_roles_profiles::profile::app_directory'),
