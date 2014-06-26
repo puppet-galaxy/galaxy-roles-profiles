@@ -9,16 +9,14 @@ galaxy_roles_profiles::profile::app_directory : '/home/galaxy/galaxy-dist'
 galaxy_roles_profiles::profile::galaxy_branch : 'stable'
 galaxy_roles_profiles::profile::custom_toolsheds : []
 galaxy_roles_profiles::profile::id_secret : 'secret'
-
 galaxy_roles_profiles::profile::db_database : 'galaxy-db'
 galaxy_roles_profiles::profile::db_username : 'galaxy'
 galaxy_roles_profiles::profile::db_password : 'toto'
-
-galaxy_roles_profiles::profile::common::db_driver : 'postgresql'
-galaxy_roles_profiles::profile::common::db_host : 'localhost'
-galaxy_roles_profiles::profile::common::db_port : 5432
-galaxy_roles_profiles::profile::common::db_opts_pool_size : 500
-galaxy_roles_profiles::profile::common::db_opts_max_overflow : 1000
-galaxy_roles_profiles::profile::common::number_of_handlers: 2
+galaxy_roles_profiles::profile::db_driver : 'postgresql'
+galaxy_roles_profiles::profile::db_host : 'localhost'
+galaxy_roles_profiles::profile::db_port : 5432
+galaxy_roles_profiles::profile::db_opts_pool_size : 500
+galaxy_roles_profiles::profile::db_opts_max_overflow : 1000
+galaxy_roles_profiles::profile::number_of_handlers: 2
 
 galaxy_roles_profiles::profile::webapp::port : 8081
