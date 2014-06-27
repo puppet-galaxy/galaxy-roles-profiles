@@ -1,6 +1,6 @@
 # == Class: galaxy_roles_profiles::profile::multicore-database
 #
-# Profile to write toolshed_conf,job_conf and universe_wsgi.ini 
+# Profile to write toolshed_conf,job_conf and universe_wsgi.ini
 # to have Galaxy in load-balancing and with a postgresql database.
 #
 # === Authors
