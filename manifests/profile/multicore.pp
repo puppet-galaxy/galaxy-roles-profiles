@@ -1,6 +1,6 @@
 # == Class: galaxy_roles_profiles::profile::multicore
 #
-# Profile to write one universe_wsgi.ini with 
+# Profile to write toolshed_conf,job_onf and universe_wsgi.ini with load-balancing config.
 #
 # === Authors
 #
@@ -18,7 +18,7 @@ class galaxy_roles_profiles::profile::multicore{
   }->
   galaxy::job_conf { 'production':
     directory => hiera('galaxy_roles_profiles::profile::app_directory'),
-   }->
+  }->
   galaxy::universe{ 'production':
     directory                    => hiera('galaxy_roles_profiles::profile::app_directory'),
     id_secret                    => hiera('galaxy_roles_profiles::profile::id_secret'),
@@ -26,4 +26,4 @@ class galaxy_roles_profiles::profile::multicore{
     number_of_web_workers        => hiera('galaxy_roles_profiles::number_of_workers'),
     number_of_background_workers => hiera('galaxy_roles_profiles::profile::common::number_of_handlers'),
   }
-}  
+}
