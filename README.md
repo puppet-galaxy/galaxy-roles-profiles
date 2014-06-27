@@ -14,7 +14,9 @@
     * [Profile galaxy-roles-profiles::profile::database](#profile-database)
     * [Profile galaxy-roles-profiles::profile::webapp](#profile-webapp)
 6. [Deal with Hiera configuration files](#hiera)   
+
 7.[Contacts](#contact)
+
 8.[Galaxy Project](#galaxy-projects)
 
 ##Overview
@@ -91,6 +93,7 @@ This profile install and configure apache to deal with Galaxy in load-balancing 
 This uses puppetlabs/apache module to install apache, create a Virtual Host and load the needed mods
 To deal with balancer configuration file, we write a template ( balancer_galaxy.conf.erb ) and a class `galaxy-roles-profiles::balancer-config`
 Further information availbale at : https://forge.puppetlabs.com/puppetlabs/apache .
+
 
 ##Hiera
 First you have to edit the hiera.yaml in /etc/hiera.yaml. (for example delete each lines in hierarchy and add "common" ).
