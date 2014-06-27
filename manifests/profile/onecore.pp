@@ -16,8 +16,6 @@
 # Copyright 2014, unless otherwise noted.
 #
 class galaxy_roles_profiles::profile::onecore {
-  class { 'galaxy_roles_profiles::profile::base':
-  }->
   galaxy::universe{ 'production':
     directory => hiera('galaxy_roles_profiles::profile::app_directory'),
     id_secret => hiera('galaxy_roles_profiles::profile::id_secret'),
