@@ -4,7 +4,7 @@
 2. [Module Description](#module-description)
 3. [Setup](#setup)
     * [First step with Puppet Galaxy](#first-step)
-4. [Available Roles for quick start](#avalaibles-roles)
+4. [Available Roles for quick start](#roles)
     * [Role galaxy-roles-profiles::role::basic](#role-basic)
     * [Role galaxy-roles-profiles::role::multicore](#role-multicore)
     * [Role galaxy-roles-profiles::role::multicore-database](#role-multicore-database)
@@ -14,9 +14,7 @@
     * [Profile galaxy-roles-profiles::profile::database](#profile-database)
     * [Profile galaxy-roles-profiles::profile::webapp](#profile-webapp)
 6. [Deal with Hiera configuration files](#hiera)   
-
 7.[Contacts](#contact)
-
 8.[Galaxy Project](#galaxy-projects)
 
 ##Overview
