@@ -16,7 +16,8 @@
 # Copyright 2014, unless otherwise noted.
 #
 class galaxy_roles_profiles::role::basic(){
-  class { 'galaxy_roles_profiles::profile::common':
-    config => 'onecore',
+  class { 'galaxy_roles_profiles::profile::base':
+  }->
+  class { 'galaxy_roles_profiles::profile::onecore':
   }
 }
