@@ -12,7 +12,7 @@
    
    Or  GALAXY_RUN_ALL=1 ./run.sh --stop-daemon and then GALAXY_RUN_ALL=1 ./run.sh --daemon.
 
-Removing PID file web0.pid" 
+
 
 => When Galaxy is running , there is not login required anymore.
 
