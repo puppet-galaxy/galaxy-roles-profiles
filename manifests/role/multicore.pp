@@ -16,9 +16,10 @@
 # Copyright 2014, unless otherwise noted.
 #
 class galaxy_roles_profiles::role::multicore(){
-  class { 'galaxy_roles_profiles::profile::common':
-    config => 'multicore',
+  class { 'galaxy_roles_profiles::profile::base':
   }->
-  class {'galaxy_roles_profiles::profile::webapp':
+  class { 'galaxy_roles_profiles::profile::multicore':
+  }->
+  class { 'galaxy_roles_profiles::profile::webapp':
   }
 }
