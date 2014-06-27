@@ -14,8 +14,8 @@
     * [Profile galaxy-roles-profiles::profile::database](#profile-database)
     * [Profile galaxy-roles-profiles::profile::webapp](#profile-webapp)
 6. [Deal with Hiera configuration files](#hiera)   
-7.[Contacts](#contact)
-8.[Galaxy Project](#galaxy-projects)
+7. [Contacts](#contact)
+8. [Galaxy Project](#galaxy-project)
 
 ##Overview
 This module install and configure a new instance of Galaxy. Today, there is three roles (three configuration) you can choose.
@@ -35,7 +35,7 @@ It uses base blocks hosted in the Galaxy module: https://forge.puppetlabs.com/ur
  * see https://forge.puppetlabs.com/puppetlabs/apache for further information
 
 ###First step
-Download from the Puppet Forge : https://forge.puppetlabs.com/urgigalaxy_roles_profiles.
+Download from the Puppet Forge : https://forge.puppetlabs.com/urgi/galaxy_roles_profiles.
 
 Configure Hiera. (See 6.Deal with Hiera).
 
