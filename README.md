@@ -102,7 +102,7 @@ You can use a sample of common.yaml and modify it as you want :
 
 $ cp /etc/puppet/modules/galaxy_roles_profiles/examples/common.yaml /var/lib/hiera -> if you have install the module.
 
-$ cp ../galaxy-roles-profiles/examples/common.yaml /var/lib/hiera -> if you use the repo from GitHub directly.
+$ cp ../galaxy_roles_profiles/examples/common.yaml /var/lib/hiera -> if you use the repo from GitHub directly.
 
 More details on Hiera at : http://docs.puppetlabs.com/hiera/1/
 
