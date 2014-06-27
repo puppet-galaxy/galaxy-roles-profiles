@@ -1,5 +1,7 @@
-# Sample for Hiear config.
-#
+# Sample for Hiera config.
+# Ready-ro-use:
+# Copy it in /var/lib/hiera/
+# Edit hiera.yaml
 #
 galaxy_roles_profiles::number_of_workers: 2
 
