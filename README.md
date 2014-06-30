@@ -40,7 +40,7 @@ How to install existing role:
 ```puppet
 	include galaxy-roles-profiles::role::<the role wich you want>
 ```
-##Available Roles 
+##Roles 
 Roles contains only one or many profiles.
  
 ###Role basic
@@ -66,29 +66,30 @@ Galaxy in load-balancing mode with PostgreSQL.
 ##Profiles
 Profiles contains one or many building-block (for example galaxy::universe). One profile is one technology layer.
 
-###galaxy-roles-profiles::profile::base
+###Profile base
 This profile install Galaxy and make the first run of Galaxy
 
-###galaxy-roles-profiles::profile::common
+###Profile common
 This profile manage toolshed_conf, job_conf and universe_wsgi.ini. Actually each configuration is written right here with if and elsif statement.
 This profile is parametrable: $config for choose wich config you want ( onecore | multicore | multicore-database).
 There are lot of parameters set by Hiera wich are used in galaxy::universe ( see 6.Hiera and https://github.com/puppet-galaxy/puppet-galaxy).
 In the future, each configuration ( one config = one universe ) will be separated from this profile.
 
-###galaxy-roles-profiles::profile::database
+###Profile database
 This profile install packages for postgresql, and configure it for add a new database for galaxy.
 This uses the puppetlabs/postgresql module.
 It's a very basic use of the postgresql module : create an user, a password and a database.
 These are set in a Hiera file. ( see 6.Hiera ).
 Furhter information available at : https://forge.puppetlabs.com/puppetlabs/postgresql .
 
-###galaxy-roles-profiles::profile::webapp
+###Profile webapp
 This profile install and configure apache to deal with Galaxy in load-balancing mode.
 This uses puppetlabs/apache module to install apache, create a Virtual Host and load the needed mods
 To deal with balancer configuration file, we write a template ( balancer_galaxy.conf.erb ) and a class `galaxy-roles-profiles::balancer-config`
 Further information availbale at : https://forge.puppetlabs.com/puppetlabs/apache .
 
-##Deal with Hiera configuration files.
+##Hiera
+
 First you have to edit the hiera.yaml in /etc/hiera.yaml. (for example delete each lines in hierarchy and add "common" ).
 
 Next you have to have one hiera file in /var/lib/hiera/ ( for example common.yaml). 
