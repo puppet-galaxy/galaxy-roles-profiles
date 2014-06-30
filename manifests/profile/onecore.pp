@@ -17,8 +17,9 @@
 #
 class galaxy_roles_profiles::profile::onecore {
   galaxy::universe{ 'production':
-    directory => hiera('galaxy_roles_profiles::profile::app_directory'),
-    id_secret => hiera('galaxy_roles_profiles::profile::id_secret'),
+    directory     => hiera('galaxy_roles_profiles::profile::app_directory'),
+    id_secret     => hiera('galaxy_roles_profiles::profile::id_secret'),
+    require_login => false,
   }->
   galaxy::service{ 'service':
     directory => hiera('galaxy_roles_profiles::profile::app_directory'),
