@@ -14,7 +14,7 @@
     * [Profile galaxy-roles-profiles::profile::database](#profile-database)
     * [Profile galaxy-roles-profiles::profile::webapp](#profile-webapp)
 6. [Deal with Hiera configuration files](#hiera)   
-7. [Github Project](#github-project)
+7. [Github Projects](#github-projects)
 8. [Contacts](#contact)
 9. [Galaxy Project](#galaxy-project)
 
