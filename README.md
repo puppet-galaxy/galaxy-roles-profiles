@@ -50,8 +50,8 @@ How to install existing role:
 ```
 -In the terminal
 
-```terminal
-	puppet apply -e "galaxy-roles-profiles::role::<the role wich you want>"
+```
+	puppet apply -e "include galaxy-roles-profiles::role::<the role wich you want>"
 ```
 
 
