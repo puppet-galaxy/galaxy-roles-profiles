@@ -43,10 +43,17 @@ Download from the Puppet Forge : https://forge.puppetlabs.com/urgi/galaxy_roles_
 Configure Hiera. (See 6.Deal with Hiera).
 
 How to install existing role:
+-In a file.pp
 
 ```puppet
 	include galaxy-roles-profiles::role::<the role wich you want>
 ```
+-In the terminal
+
+```
+	puppet apply -e "galaxy-roles-profiles::role::<the role wich you want>"
+```
+
 
 ##Usage
 ###Classes
@@ -56,21 +63,21 @@ Roles contains only one or many profiles.
 ####Role: `galaxy_roles_profiles::role::basic`
 Galaxy in basic config. It means with SQLite and only one core.
 
-```puppet
-	include galaxy-roles-profiles::role::basic
+```console
+	puppet apply -e "galaxy_roles_profiles::role::basic"
 ```
 
 ####Role: `galaxy_roles_profiles::role::multicore`
 Galaxy in load-balancing mode with SQLite.
 
-```puppet
-	include galaxy-roles-profiles::role::multicore
+```
+	puppet apply -e "galaxy-roles-profiles::role::multicore"
 ```
 ####Role: `galaxy_roles_profiles::role::multicore-database`
 Galaxy in load-balancing mode with PostgreSQL.
 
-```puppet
-	include galaxy-roles-profiles::role::multicore-database
+```
+	puppet apply -e "galaxy_roles_profiles::role::multicore-database"
 ```
 
 ###Profiles
