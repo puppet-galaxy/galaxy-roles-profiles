@@ -25,14 +25,19 @@
 # Copyright 2014, unless otherwise noted.
 #
 class galaxy_roles_profiles::profile::database(){
-
   $db_database = hiera ('galaxy_roles_profiles::profile::db_database')
   $db_user     = hiera('galaxy_roles_profiles::profile::db_username')
-  $db_pd = hiera('galaxy_roles_profiles::profile::db_password')
-  $directory = $galaxy::params::directory
+  $db_pd       = hiera('galaxy_roles_profiles::profile::db_password')
+  $directory   = $galaxy::params::directory
   class { 'postgresql::server': }
   postgresql::server::db { $db_database :
     user     => $db_user ,
     password => postgresql_password( $db_user, $db_pd ),
-  }
+  }->
+  exec { 'create_db.sh':
+    path    => '/usr/bin:/usr/sbin:/bin:/sbin',
+    cwd     => $directory,
+    user    => 'galaxy',
+    command => 'sh create_db.sh',
+  } 
 }
