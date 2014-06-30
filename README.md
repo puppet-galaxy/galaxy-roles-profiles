@@ -14,8 +14,9 @@
     * [Profile galaxy-roles-profiles::profile::database](#profile-database)
     * [Profile galaxy-roles-profiles::profile::webapp](#profile-webapp)
 6. [Deal with Hiera configuration files](#hiera)   
-7. [Contacts](#contact)
-8. [Galaxy Project](#galaxy-project)
+7. [Github Project](#github-project)
+8. [Contacts](#contact)
+9. [Galaxy Project](#galaxy-project)
 
 ##Overview
 This module install and configure a new instance of Galaxy. Today, there are three roles (three configuration) you can choose.
