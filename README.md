@@ -53,7 +53,7 @@ How to install existing role:
 ###Roles 
 Roles contains only one or many profiles.
  
-####Role: `galaxy_roles_profile::role::basic`
+####Role: `galaxy_roles_profiles::role::basic`
 Galaxy in basic config. It means with SQLite and only one core.
 
 ```puppet
