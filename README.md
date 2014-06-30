@@ -64,20 +64,20 @@ Roles contains only one or many profiles.
 Galaxy in basic config. It means with SQLite and only one core.
 
 ```
-	puppet apply -e "galaxy_roles_profiles::role::basic"
+	puppet apply -e "include galaxy_roles_profiles::role::basic"
 ```
 
 ####Role: `galaxy_roles_profiles::role::multicore`
 Galaxy in load-balancing mode with SQLite.
 
 ```
-	puppet apply -e "galaxy-roles-profiles::role::multicore"
+	puppet apply -e "include galaxy-roles-profiles::role::multicore"
 ```
 ####Role: `galaxy_roles_profiles::role::multicore-database`
 Galaxy in load-balancing mode with PostgreSQL.
 
 ```
-	puppet apply -e "galaxy_roles_profiles::role::multicore-database"
+	puppet apply -e "include galaxy_roles_profiles::role::multicore-database"
 ```
 
 ###Profiles
