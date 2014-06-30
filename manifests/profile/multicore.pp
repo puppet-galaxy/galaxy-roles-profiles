@@ -22,6 +22,7 @@ class galaxy_roles_profiles::profile::multicore{
   galaxy::universe{ 'production':
     directory                    => hiera('galaxy_roles_profiles::profile::app_directory'),
     id_secret                    => hiera('galaxy_roles_profiles::profile::id_secret'),
+    require_login                => false,
     wk_config                    => true,
     number_of_web_workers        => hiera('galaxy_roles_profiles::number_of_workers'),
     number_of_background_workers => hiera('galaxy_roles_profiles::profile::common::number_of_handlers'),
