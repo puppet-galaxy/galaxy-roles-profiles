@@ -4,19 +4,21 @@
 2. [Module Description](#module-description)
 3. [Setup](#setup)
     * [First step with Puppet Galaxy](#first-step)
-4. [Available Roles for quick start](#roles)
-    * [Role galaxy-roles-profiles::role::basic](#role-basic)
-    * [Role galaxy-roles-profiles::role::multicore](#role-multicore)
-    * [Role galaxy-roles-profiles::role::multicore-database](#role-multicore-database)
-5. [Profiles](#profiles)
-    * [Profile galaxy-roles-profiles::profile::base](#profile-base)
-    * [Profile galaxy-roles-profiles::profile::common](#profile-common)
-    * [Profile galaxy-roles-profiles::profile::database](#profile-database)
-    * [Profile galaxy-roles-profiles::profile::webapp](#profile-webapp)
-6. [Deal with Hiera configuration files](#hiera)   
-7. [Github Projects](#github-projects)
-8. [Contacts](#contact)
-9. [Galaxy Project](#galaxy-project)
+4. [Usage - The classes,roles and profiles available for configuration ](#usage)
+    * [Classes](#classes)
+    * [Roles](#roles)
+        * [Role galaxy-roles-profiles::role::basic](#role-galaxy_roles_profilesrolebasic)
+        * [Role galaxy-roles-profiles::role::multicore](#role-galaxy_roles_profilesrolemulticore)
+        * [Role galaxy-roles-profiles::role::multicore-database](#role-galaxy_roles_profilesrolemulticore-database)
+    * [Profiles](#profiles)
+        * [Profile galaxy-roles-profiles::profile::base](#profile-galaxy_roles_profilesprofilebase)
+        * [Profile galaxy-roles-profiles::profile::common](#profile-galaxy_roles_profilesprofilecommon)
+        * [Profile galaxy-roles-profiles::profile::database](#profile-galaxy_roles_profilesprofiledatabase)
+        * [Profile galaxy-roles-profiles::profile::webapp](#profile-galaxy_roles_profileprofilewebapp)
+5. [Deal with Hiera configuration files](#hiera)   
+6. [Github Projects](#github-projects)
+7. [Contacts](#contact)
+8. [Galaxy Project](#galaxy-project)
 
 ##Overview
 This module install and configure a new instance of Galaxy. Today, there are three roles (three configuration) you can choose.
@@ -45,49 +47,52 @@ How to install existing role:
 ```puppet
 	include galaxy-roles-profiles::role::<the role wich you want>
 ```
-##Roles 
+
+##Usage
+###Classes
+###Roles 
 Roles contains only one or many profiles.
  
-###Role basic
+####Role: `galaxy_roles_profile::role::basic`
 Galaxy in basic config. It means with SQLite and only one core.
 
 ```puppet
 	include galaxy-roles-profiles::role::basic
 ```
 
-###Role multicore
+####Role: `galaxy_roles_profiles::role::multicore`
 Galaxy in load-balancing mode with SQLite.
 
 ```puppet
 	include galaxy-roles-profiles::role::multicore
 ```
-###Role multicore-database
+####Role: `galaxy_roles_profiles::role::multicore-database`
 Galaxy in load-balancing mode with PostgreSQL.
 
 ```puppet
 	include galaxy-roles-profiles::role::multicore-database
 ```
 
-##Profiles
+###Profiles
 Profiles contains one or many building-block (for example galaxy::universe). One profile is one technology layer.
 
-###Profile base
+####Profile: `galaxy_roles_profiles::profile::base`
 This profile install Galaxy and make the first run of Galaxy
 
-###Profile common
+####Profile: `galaxy_roles_profiles::profile::common`
 This profile manage toolshed_conf, job_conf and universe_wsgi.ini. Actually each configuration is written right here with if and elsif statement.
 This profile is parametrable: $config for choose wich config you want ( onecore | multicore | multicore-database).
 There are lot of parameters set by Hiera wich are used in galaxy::universe ( see 6.Hiera and https://github.com/puppet-galaxy/puppet-galaxy).
 In the future, each configuration ( one config = one universe ) will be separated from this profile.
 
-###Profile database
+####Profile: `galaxy_roles_profiles::profile::database`
 This profile install packages for postgresql, and configure it for add a new database for galaxy.
 This uses the puppetlabs/postgresql module.
 It's a very basic use of the postgresql module : create an user, a password and a database.
 These are set in a Hiera file. ( see 6.Hiera ).
 Further information available at : https://forge.puppetlabs.com/puppetlabs/postgresql .
 
-###Profile webapp
+####Profile: `galaxy_roles_profiles::profile::webapp`
 This profile install and configure apache to deal with Galaxy in load-balancing mode.
 This uses puppetlabs/apache module to install apache, create a Virtual Host and load the needed mods
 To deal with balancer configuration file, we write a template ( balancer_galaxy.conf.erb ) and a class `galaxy-roles-profiles::balancer-config`
