@@ -18,7 +18,7 @@
 8. [Galaxy Project](#galaxy-project)
 
 ##Overview
-This module install and configure a new instance of Galaxy. Today, there is three roles (three configuration) you can choose.
+This module install and configure a new instance of Galaxy. Today, there are three roles (three configuration) you can choose.
 
 ##Module Description
 This is the galaxy-roles-profiles module. Galaxy is an open, web-based platform for accessible, reproducible, and transparent computational biomedical research.
@@ -84,19 +84,19 @@ This profile install packages for postgresql, and configure it for add a new dat
 This uses the puppetlabs/postgresql module.
 It's a very basic use of the postgresql module : create an user, a password and a database.
 These are set in a Hiera file. ( see 6.Hiera ).
-Furhter information available at : https://forge.puppetlabs.com/puppetlabs/postgresql .
+Further information available at : https://forge.puppetlabs.com/puppetlabs/postgresql .
 
 ###Profile webapp
 This profile install and configure apache to deal with Galaxy in load-balancing mode.
 This uses puppetlabs/apache module to install apache, create a Virtual Host and load the needed mods
 To deal with balancer configuration file, we write a template ( balancer_galaxy.conf.erb ) and a class `galaxy-roles-profiles::balancer-config`
-Further information availbale at : https://forge.puppetlabs.com/puppetlabs/apache .
+Further information available at : https://forge.puppetlabs.com/puppetlabs/apache .
 
 
 ##Hiera
-First you have to edit the hiera.yaml in /etc/hiera.yaml. (for example delete each lines in hierarchy and add "common" ).
+First you have to edit the hiera.yaml in /etc/hiera.yaml and in /etc/puppet/hiera.yaml (for example delete each lines in hierarchy and add "common" ).
 
-Next you have to have one hiera file in /var/lib/hiera/ ( for example common.yaml). 
+Next you have to have one hiera file in /var/lib/hiera/ ( for example common.yaml) 
 
 You can use a sample of common.yaml and modify it as you want :
 
