@@ -39,5 +39,5 @@ class galaxy_roles_profiles::profile::database(){
     cwd     => $directory,
     user    => 'galaxy',
     command => 'sh create_db.sh',
-  } 
+  }
 }
