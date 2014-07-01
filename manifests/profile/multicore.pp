@@ -17,7 +17,8 @@ class galaxy_roles_profiles::profile::multicore{
     custom_toolsheds => hiera('galaxy_roles_profiles::profile::custom_toolsheds'),
   }->
   galaxy::job_conf { 'production':
-    directory => hiera('galaxy_roles_profiles::profile::app_directory'),
+    directory                    => hiera('galaxy_roles_profiles::profile::app_directory'),
+    number_of_background_workers => hiera('galaxy_roles_profiles::profile::number_of_handlers'),
   }->
   galaxy::universe{ 'production':
     directory                    => hiera('galaxy_roles_profiles::profile::app_directory'),
@@ -25,6 +26,6 @@ class galaxy_roles_profiles::profile::multicore{
     require_login                => false,
     wk_config                    => true,
     number_of_web_workers        => hiera('galaxy_roles_profiles::number_of_workers'),
-    number_of_background_workers => hiera('galaxy_roles_profiles::profile::common::number_of_handlers'),
+    number_of_background_workers => hiera('galaxy_roles_profiles::profile::number_of_handlers'),
   }
 }
