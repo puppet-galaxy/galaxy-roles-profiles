@@ -18,7 +18,8 @@ galaxy::toolshed_conf{ 'production':
       custom_toolsheds => hiera('galaxy_roles_profiles::profile::custom_toolsheds'),
     }->
     galaxy::job_conf { 'production':
-      directory => hiera('galaxy_roles_profiles::profile::app_directory'),
+      directory                    => hiera('galaxy_roles_profiles::profile::app_directory'),
+      number_of_background_workers => hiera('galaxy_roles_profiles::profile::number_of_handlers'),
     }->
     galaxy::universe{ 'production':
       directory                    => hiera('galaxy_roles_profiles::profile::app_directory'),
@@ -33,7 +34,7 @@ galaxy::toolshed_conf{ 'production':
       db_opts_max_overflow         => hiera('galaxy_roles_profiles::profile::db_opts_max_overflow'),
       db_username                  => hiera('galaxy_roles_profiles::profile::db_username'),
       db_password                  => hiera('galaxy_roles_profiles::profile::db_password'),
-      db_database                  => hiera ('galaxy_roles_profiles::profile::db_database'),
+      db_database                  => hiera('galaxy_roles_profiles::profile::db_database'),
       number_of_background_workers => hiera('galaxy_roles_profiles::profile::number_of_handlers'),
       number_of_web_workers        => hiera('galaxy_roles_profiles::number_of_workers'),
     }
