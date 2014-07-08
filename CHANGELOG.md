@@ -1,4 +1,4 @@
-#2014-??-06 Release 0.0.8
+#2014-08-07 Release 0.0.8
 
 => Common does not exist anymore
 
@@ -6,7 +6,7 @@
 
 => Add profile onecore-database, multicore-database , multicore , onecore  : These manage universe.ini and other config files. Onecore launch galaxy as a service.
 
-=> Resolve minor bug when we add one database like postgresql db.
+=> Resolve minor bug when we add one database like postgresql.
 
 
 #2014-26-06 Release 0.0.7
