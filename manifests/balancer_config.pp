@@ -29,7 +29,7 @@ class galaxy_roles_profiles::balancer_config(
   $directory = '/etc/apache2/conf.d/',
   $webworker_starting_port_number= 8000,
 ){
-  $number_of_web_workers_array = range('0', -1+hiera('galaxy_roles_profiles::number_of_workers'))
+  $number_of_web_workers_array = range('0', -1+hiera('galaxy::universe::number_of_web_workers') )
   file { "$directory/balancer_galaxy.conf":
     content => template('galaxy_roles_profiles/balancer_galaxy.conf.erb'),
   }
