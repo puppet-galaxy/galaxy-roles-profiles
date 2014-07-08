@@ -39,7 +39,7 @@ class galaxy_roles_profiles::profile::webapp(){
                           '^/favicon.ico /home/galaxy/galaxy-dist/static/favicon.ico [L]',
                           '^/robots.txt /home/galaxy/galaxy-dist/static/robots.txt [L]',
                           '^(.*) balancer://galaxy$1 [P]',
-                        ] 
+                        ]
       },
     ]
   }
