@@ -10,6 +10,7 @@ galaxy_roles_profiles::profile::app_directory : '/home/galaxy/galaxy-dist'
 galaxy_roles_profiles::profile::galaxy_branch : 'stable'
 galaxy_roles_profiles::profile::custom_toolsheds : []
 galaxy_roles_profiles::profile::id_secret : 'secret'
+
 galaxy_roles_profiles::profile::db_database : 'galaxy-db'
 galaxy_roles_profiles::profile::db_username : 'galaxy'
 galaxy_roles_profiles::profile::db_password : 'toto'
