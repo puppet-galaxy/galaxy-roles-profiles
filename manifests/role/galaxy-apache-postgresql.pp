@@ -12,12 +12,13 @@
 #
 # Copyright 2014, unless otherwise noted.
 #
-#
-class galaxy_roles_profiles::role::galaxy_apache-postgresql{
+class galaxy_roles_profiles::role::galaxy-apache-postgresql{
   class { 'galaxy_roles_profiles::profile::common':
   }->
   class { 'galaxy_roles_profiles::profile::database':
   }->
   class { 'galaxy_roles_profiles::profile::webapp':
+  }->
+  class { 'galaxy_roles_profiles::profile::galaxy_service':
   }
 }
