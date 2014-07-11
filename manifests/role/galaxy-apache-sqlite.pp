@@ -1,10 +1,10 @@
-# == Class galaxy_roles_profiles::role::galaxy-apache
+# == Class galaxy_roles_profiles::role::galaxy-apache-sqlite
 # This role create one instance of galaxy with multicore configuration.
 # That means Galaxy runs with several cores and with SQLite.
 #
 # ==== Examples
 #
-# include galaxy_roles_profiles::role::multicore
+# include galaxy_roles_profiles::role::galaxy-apache-sqlite
 #
 # === Authors
 #
@@ -21,5 +21,7 @@ class galaxy_roles_profiles::role::galaxy-apache-sqlite{
   class { 'galaxy_roles_profiles::profile::sqlite':
   }->
   class { 'galaxy_roles_profiles::profile::webapp':
+  }->
+  class { 'galaxy_roles_profiles::profile::galaxy_service':
   }
 }
