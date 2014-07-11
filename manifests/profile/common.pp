@@ -14,7 +14,7 @@ class galaxy_roles_profiles::profile::common {
   }->
   class { 'galaxy::install':
   }->
-  class { 'galaxy::first_run':
+  class { 'galaxy::common_startup':
   }->
   class { 'galaxy::universe':
   }->
