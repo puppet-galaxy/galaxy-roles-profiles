@@ -14,6 +14,7 @@
 #
 # S. Bridel <sbridel@versailles.inra.fr>
 # O. Inizan <oinizan@versailles.inra.fr>
+# M. Loac   <mloac@versailles.inra.fr>
 #
 # === Copyright
 #
