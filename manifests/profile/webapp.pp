@@ -1,14 +1,14 @@
-# == Class galaxy_roles_profiles::profile::webapp
+# == Class galaxy_roles_profiles::profile::apache
 # Managing Apache for Galaxy in loadbalancing mode:
 # -Install apache and all mods wich are needed
 # -Manage apache's configuration
 #
 # === Parameters
-# [*galaxy_roles_profiles::profile::webapp::port*]
+# [*galaxy_roles_profiles::profile::apache::port*]
 # Set the port wich you want to use for your Galaxy
 # ==== Examples
 #
-# include galaxy_roles_profiles::profile::webapp
+# include galaxy_roles_profiles::profile::apache
 #
 # === Authors
 #
@@ -19,8 +19,8 @@
 #
 # Copyright 2014, unless otherwise noted.
 #
-class galaxy_roles_profiles::profile::webapp(){
-  include apache
+class galaxy_roles_profiles::profile::apache(){
+  include ::apache
   include apache::mod::proxy
   include apache::mod::proxy_balancer
   include apache::mod::rewrite
@@ -29,7 +29,7 @@ class galaxy_roles_profiles::profile::webapp(){
   include galaxy_roles_profiles::balancer_config
 
   apache::vhost{ 'galaxy.test':
-    port     => hiera('galaxy_roles_profiles::profile::webapp::port'),
+    port     => hiera('galaxy_roles_profiles::profile::apache::port'),
     docroot  => '/var/www/galaxy',
     rewrites =>
     [
