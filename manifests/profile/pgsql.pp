@@ -29,16 +29,12 @@ class galaxy_roles_profiles::profile::pgsql{
   $db_user     = hiera('galaxy::universe::db_username')
   $db_pd       = hiera('galaxy::universe::db_password')
   $app_directory   = $galaxy::params::app_directory
-  class { 'postgresql::server': }
+  
+  include postgresql::server 
   postgresql::server::db { $db_database :
     user     => $db_user ,
     password => postgresql_password( $db_user, $db_pd ),
   }->
-  exec { 'create_db.sh':
-    require =>  Class ['galaxy::universe'],
-    path    => '/usr/bin:/usr/sbin:/bin:/sbin',
-    cwd     => $app_directory,
-    user    => 'galaxy',
-    command => 'sh create_db.sh',
-  }
+  class { 'galaxy::create_db:
+    } 
 }
