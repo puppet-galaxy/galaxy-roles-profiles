@@ -19,6 +19,6 @@ class galaxy_roles_profiles::role::galaxy-sqlite{
   }->
   class { 'galaxy_roles_profiles::profile::sqlite':
   }->
-  class { 'galaxy_roles_profiles::profile::galaxy_service':
+  class { 'galaxy_roles_profiles::profile::galaxy':
   }
 }
