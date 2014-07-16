@@ -28,7 +28,6 @@ class galaxy_roles_profiles::profile::apache(){
   include galaxy_roles_profiles::balancer_config
 
   apache::vhost{ 'galaxy.test':
-    port     => hiera('galaxy_roles_profiles::profile::apache::port'),
     docroot  => '/var/www/galaxy',
     rewrites =>
     [
