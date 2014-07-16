@@ -15,7 +15,7 @@ class galaxy_roles_profiles::profile::common {
   include galaxy::common_startup
   include galaxy::universe
   include galaxy::toolshed_conf
-  if galaxy::universe::wk_config == true  {
+  if $galaxy::universe::wk_config == true  {
     include galaxy::job_conf
   }
 }
