@@ -24,17 +24,21 @@
 #
 # Copyright 2014, unless otherwise noted.
 #
-class galaxy_roles_profiles::profile::pgsql{
-  $db_database = hiera('galaxy::universe::db_database')
-  $db_user     = hiera('galaxy::universe::db_username')
-  $db_pd       = hiera('galaxy::universe::db_password')
-  $app_directory   = $galaxy::params::app_directory
-  
+class galaxy_roles_profiles::profile::pgsql(
+  $db_name = undef,
+  $db_user = undef,
+  $db_pass = undef,
+){
+  if !($db_name or $db_user or $db_pass ){
+    fail ('$db_user , $db_name or $db_pass is unset.If you want to use PostgreSQL, please ensure that these variables are correctly set. 
+    Be sure these are the same in the database URL for Galaxy.')
+  }
+  $app_directory = $galaxy::params::app_directory
   class { 'postgresql::server': 
   }->
-  postgresql::server::db { $db_database :
+  postgresql::server::db { $db_name :
     user     => $db_user ,
-    password => postgresql_password( $db_user, $db_pd ),
+    password => postgresql_password( $db_user, $db_pass ),
   }->
   class { 'galaxy::create_db':
   } 
