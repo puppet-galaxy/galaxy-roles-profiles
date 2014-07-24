@@ -24,6 +24,8 @@ class galaxy_roles_profiles::profile::webapp(){
   include apache::mod::proxy
   include apache::mod::proxy_balancer
   include apache::mod::rewrite
+  apache::mod { 'slotmem_shm': }
+  apache::mod { 'lbmethod_byrequests': }
   include galaxy_roles_profiles::balancer_config
 
   apache::vhost{ 'galaxy.test':
