@@ -24,11 +24,8 @@ class galaxy_roles_profiles::profile::apache(
   $port_to_listen = 8081
 ){
   include ::apache
-  include apache::mod::proxy
-  include apache::mod::proxy_balancer
   include apache::mod::rewrite
-  apache::mod { 'slotmem_shm': }
-  apache::mod { 'lbmethod_byrequests': }
+  apache::mod{ 'uwsgi': }
   if $galaxy::universe::wk_config{
     apache::vhost{ 'galaxy':
       port     => $port_to_listen,
@@ -36,16 +33,22 @@ class galaxy_roles_profiles::profile::apache(
       rewrites =>
       [
         {
-          comment      => 'Rules for Galaxy in loadbalancing mode',
+          comment      => 'Rules for Galaxy in uWSGI mode',
           rewrite_rule => [ '^/static/style/(.*) /home/galaxy/galaxy-dist/static/june_2007_style/blue/$1 [L]',
                             '^/static/scripts/(.*) /home/galaxy/galaxy-dist/static/scripts/packed/$1 [L]',
                             '^/static/(.*) /home/galaxy/galaxy-dist/static/$1 [L]',
                             '^/favicon.ico /home/galaxy/galaxy-dist/static/favicon.ico [L]',
                             '^/robots.txt /home/galaxy/galaxy-dist/static/robots.txt [L]',
-                            '^(.*) balancer://galaxy$1 [P]',
                           ]
        },
-      ]
+      ],
+      custom_fragment => '
+<Location />
+  Sethandler uwsgi-handler
+  uWSGISocket 127.0.0.1:4001
+  uWSGImaxVars 512
+</Location>
+      '
     }
   }
 
