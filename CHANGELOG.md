@@ -1,3 +1,7 @@
+#2014-25-07 Release 0.0.9
+
+=> Migrated to uWSGI framework
+
 #2014-08-07 Release 0.0.8
 
 => Common does not exist anymore
