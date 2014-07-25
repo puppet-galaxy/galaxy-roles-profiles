@@ -1,4 +1,18 @@
-#2014-??-06 Release 0.0.8
+#2014.06.26 Release 0.0.7
+
+=> Multicore OK.
+   
+   Known issue:
+
+   With VM wich does not have enough resources, if you want to use multicore,
+
+   the first time you run  GALAXY_RUN_ALL=1 ./run.sh --daemon, one web could not run correctly.
+
+   In that case, simply re-run the command GALAXY_RUN_ALL=1 ./run.sh --daemon.
+   
+   Or  GALAXY_RUN_ALL=1 ./run.sh --stop-daemon and then GALAXY_RUN_ALL=1 ./run.sh --daemon.
+
+Removing PID file web0.pid" 
 
 => Common does not exist anymore
 
