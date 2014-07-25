@@ -33,7 +33,7 @@ class galaxy_roles_profiles::profile::pgsql(
     fail ('$db_user , $db_name or $db_pass is unset.If you want to use PostgreSQL, please ensure that these variables are correctly set. 
     Be sure these are the same in the database URL for Galaxy.')
   }
-  $app_directory = $galaxy::params::app_directory
+  $app_directory = hiera("galaxy::universe::app_directory" )
   class { 'postgresql::server': 
   }->
   postgresql::server::db { $db_name :

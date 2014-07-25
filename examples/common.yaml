@@ -12,12 +12,14 @@ galaxy::universe::galaxy_branch : 'stable'
 galaxy::universe::custom_toolsheds : []
 galaxy::universe::id_secret : 'secret'
 galaxy::universe::require_login : false
-#
-# #galaxy::universe::wk_config: true
-# #galaxy::universe::number_of_background_workers: 2
-# #galaxy::universe::number_of_web_workers : 2
-# #galaxy::job_conf::number_of_background_workers: 2
-#
+
+galaxy::runners::count: 2
+galaxy::runners::local::enable: true
+#galaxy::runners::condor::enable: true
+#galaxy::runners::destination::default: 'local'
+#galaxy::universe::wk_config: true
+
+## Database Information
 # #galaxy::universe::db_connection : 'sqlite:///./database/puppet.sqlite?isolation_level=IMMEDIATE'
 #
 # #galaxy::universe::db_connection : 'postgresql://galaxy:galaxy@localhost:5432/dbgalaxy'

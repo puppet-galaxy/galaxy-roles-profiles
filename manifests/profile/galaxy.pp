@@ -9,6 +9,8 @@ class galaxy_roles_profiles::profile::galaxy{
   if $galaxy::universe::wk_config == true  {
     include galaxy::job_conf
   }
-  include galaxy::common_startup
-  include galaxy::service
+  class { "galaxy::first_run":
+  } ->
+  class { "galaxy::service":
+  }
 }
