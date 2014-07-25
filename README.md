@@ -105,6 +105,7 @@ This uses puppetlabs/apache module to install apache, create a Virtual Host and 
 To deal with balancer configuration file, we write a template ( balancer_galaxy.conf.erb ) and a class `galaxy-roles-profiles::balancer-config`
 Further information available at : https://forge.puppetlabs.com/puppetlabs/apache .
 
+
 ##Hiera
 First you have to edit the hiera.yaml in /etc/hiera.yaml and in /etc/puppet/hiera.yaml (for example delete each lines in hierarchy and add "common" ).
 
