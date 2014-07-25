@@ -1,14 +1,3 @@
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
 class galaxy_roles_profiles::profile::common {
   include ::galaxy
   include galaxy::install
