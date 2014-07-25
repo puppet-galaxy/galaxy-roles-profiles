@@ -1,24 +1,28 @@
 # Sample for Hiera config.
 # Ready to use:
 # -cp in the /var/lib/hiera/
-# -modify hiera.yaml 
-galaxy_roles_profiles::number_of_workers: 2
+# -modify hiera.yaml
 
-galaxy_roles_profiles::profile::create_user : true
-galaxy_roles_profiles::profile::home_directory : '/home/galaxy'
-galaxy_roles_profiles::profile::app_directory : '/home/galaxy/galaxy-dist'
-galaxy_roles_profiles::profile::galaxy_branch : 'stable'
-galaxy_roles_profiles::profile::custom_toolsheds : []
-galaxy_roles_profiles::profile::id_secret : 'secret'
+galaxy::universe::create_user : true
+galaxy::universe::home_directory : '/home/galaxy'
+galaxy::universe::app_directory : '/home/galaxy/galaxy-dist'
+galaxy::universe::galaxy_branch : 'stable'
+galaxy::universe::custom_toolsheds : []
+galaxy::universe::id_secret : 'secret'
+galaxy::universe::require_login : false
 
-galaxy_roles_profiles::profile::db_database : 'galaxy-db'
-galaxy_roles_profiles::profile::db_username : 'galaxy'
-galaxy_roles_profiles::profile::db_password : 'toto'
-galaxy_roles_profiles::profile::db_driver : 'postgresql'
-galaxy_roles_profiles::profile::db_host : 'localhost'
-galaxy_roles_profiles::profile::db_port : 5432
-galaxy_roles_profiles::profile::db_opts_pool_size : 500
-galaxy_roles_profiles::profile::db_opts_max_overflow : 1000
-galaxy_roles_profiles::profile::number_of_handlers: 2
+#galaxy::universe::wk_config: true
+#galaxy::universe::number_of_background_workers: 2
+#galaxy::job_conf::number_of_background_workers: 2
 
-galaxy_roles_profiles::profile::webapp::port : 8081
+#galaxy::universe::db_config : true
+galaxy::universe::db_database : 'galaxy-db'
+galaxy::universe::db_username : 'galaxy'
+galaxy::universe::db_password : 'toto'
+galaxy::universe::db_driver : 'postgresql'
+galaxy::universe::db_host : 'localhost'
+galaxy::universe::db_port : 5432
+galaxy::universe::db_opts_pool_size : 500
+galaxy::universe::db_opts_max_overflow : 1000
+
+#apache::vhost::port : 8081
