@@ -20,29 +20,44 @@
 #
 # Copyright 2014, unless otherwise noted.
 #
-class galaxy_roles_profiles::profile::apache(){
+class galaxy_roles_profiles::profile::apache(
+  $port_to_listen = 8081
+){
   include ::apache
   include apache::mod::proxy
   include apache::mod::proxy_balancer
   include apache::mod::rewrite
-  apache::mod { 'slotmem_shm': }
-  apache::mod { 'lbmethod_byrequests': }
-  include galaxy_roles_profiles::balancer_config
-
-  apache::vhost{ 'galaxy.test':
-    docroot  => '/var/www/galaxy',
-    rewrites =>
-    [
-      {
-        comment      => 'Rules for Galaxy in loadbalancing mode',
-        rewrite_rule => [ '^/static/style/(.*) /home/galaxy/galaxy-dist/static/june_2007_style/blue/$1 [L]',
-                          '^/static/scripts/(.*) /home/galaxy/galaxy-dist/static/scripts/packed/$1 [L]',
-                          '^/static/(.*) /home/galaxy/galaxy-dist/static/$1 [L]',
-                          '^/favicon.ico /home/galaxy/galaxy-dist/static/favicon.ico [L]',
-                          '^/robots.txt /home/galaxy/galaxy-dist/static/robots.txt [L]',
-                          '^(.*) balancer://galaxy$1 [P]',
-                        ]
-      },
-    ]
+  if $galaxy::universe::wk_config{
+    include galaxy_roles_profiles::balancer_config
+    apache::vhost{ 'galaxy':
+      port     => $port_to_listen,
+      docroot  => '/var/www/galaxy',
+      rewrites =>
+      [
+        {
+          comment      => 'Rules for Galaxy in loadbalancing mode',
+          rewrite_rule => [ '^/static/style/(.*) /home/galaxy/galaxy-dist/static/june_2007_style/blue/$1 [L]',
+                            '^/static/scripts/(.*) /home/galaxy/galaxy-dist/static/scripts/packed/$1 [L]',
+                            '^/static/(.*) /home/galaxy/galaxy-dist/static/$1 [L]',
+                            '^/favicon.ico /home/galaxy/galaxy-dist/static/favicon.ico [L]',
+                            '^/robots.txt /home/galaxy/galaxy-dist/static/robots.txt [L]',
+                            '^(.*) balancer://galaxy$1 [P]',
+                          ]
+       },
+      ]
+    }
+  }
+  else{
+    apache::vhost{ 'galaxy':
+      port     => $port_to_listen,
+      docroot  => '/var/www/galaxy',
+      rewrites =>
+      [
+        {
+          comment      => 'Rules for Galaxy in loadbalancing mode',
+          rewrite_rule => '^(.*) http://localhost:8080$1 [P]',
+        },
+      ]
+    }
   }
 }
