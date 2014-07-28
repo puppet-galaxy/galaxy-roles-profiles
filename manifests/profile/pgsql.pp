@@ -30,16 +30,16 @@ class galaxy_roles_profiles::profile::pgsql(
   $db_pass = undef,
 ){
   if !($db_name or $db_user or $db_pass ){
-    fail ('$db_user , $db_name or $db_pass is unset.If you want to use PostgreSQL, please ensure that these variables are correctly set. 
+    fail ('$db_user , $db_name or $db_pass is unset.If you want to use PostgreSQL, please ensure that these variables are correctly set.
     Be sure these are the same in the database URL for Galaxy.')
   }
   $app_directory = $galaxy::params::app_directory
-  class { 'postgresql::server': 
+  class { 'postgresql::server':
   }->
   postgresql::server::db { $db_name :
     user     => $db_user ,
     password => postgresql_password( $db_user, $db_pass ),
   }->
   class { 'galaxy::create_db':
-  } 
+  }
 }
