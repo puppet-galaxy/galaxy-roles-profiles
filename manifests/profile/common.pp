@@ -18,4 +18,5 @@ class galaxy_roles_profiles::profile::common {
     include galaxy::job_conf
   }
   include galaxy::common_startup
+  include galaxy::manage_tools
 }
