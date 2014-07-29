@@ -25,8 +25,8 @@ class galaxy_roles_profiles::profile::apache(
 ){
   include ::apache
   include apache::mod::rewrite
-  apache::mod{ 'uwsgi': }
-  if hiera("galaxy::universe::wk_config"){
+  include apache::mod::uwsgi'
+  if $galaxy::universe::wk_config{
     apache::vhost{ 'galaxy':
       port     => $port_to_listen,
       docroot  => '/var/www/galaxy',
@@ -43,12 +43,12 @@ class galaxy_roles_profiles::profile::apache(
        },
       ],
       custom_fragment => '
-<Location />
-  Sethandler uwsgi-handler
-  uWSGISocket 127.0.0.1:4001
-  uWSGImaxVars 512
-</Location>
-      '
+        <Location />
+        Sethandler uwsgi-handler
+        uWSGISocket 127.0.0.1:4001
+        uWSGImaxVars 512
+        </Location>
+        '
     }
   }
   else{
