@@ -16,9 +16,6 @@ class galaxy_roles_profiles::role::galaxy-apache-postgresql{
   class { 'galaxy_roles_profiles::profile::common':
   }->
   class { 'galaxy_roles_profiles::profile::pgsql':
-    db_name => hiera('galaxy_roles_profiles::profile::db_database'),
-    db_user => hiera('galaxy_roles_profiles::profile::db_username'),
-    db_pass => hiera('galaxy_roles_profiles::profile::db_password'),
   }->
   class { 'galaxy_roles_profiles::profile::apache':
   }->
