@@ -26,7 +26,6 @@
 # Copyright 2014, unless otherwise noted.
 #
 class galaxy_roles_profiles::balancer_config(
-  $directory = '/etc/apache2/conf.d/',
   $webworker_starting_port_number= 8000,
 ){
   case $::osfamily{
