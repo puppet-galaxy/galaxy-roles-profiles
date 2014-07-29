@@ -25,7 +25,7 @@ class galaxy_roles_profiles::profile::apache(
 ){
   include ::apache
   include apache::mod::rewrite
-  include apache::mod::uwsgi'
+  include apache::mod::uwsgi
   if $galaxy::universe::wk_config{
     apache::vhost{ 'galaxy':
       port     => $port_to_listen,
