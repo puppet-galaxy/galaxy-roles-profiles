@@ -1,3 +1,16 @@
+#2014-30-08 Release 0.0.9
+=> Common returns. It downloads galaxy and create an user, a directory and manages config files.
+
+=>Roles : galaxy-sqlite, galaxy-postgresql , galaxy-apache-sqlite, galaxy-apache-postgresql
+ And the configuration of onecore or multicore is now done by Hiera
+
+=>Profiles : each profiles are one service except profile ::common.
+
+=>All configuration can be done through Hiera and a file.yaml
+
+=> Removed profile ::base
+
+
 #2014-08-07 Release 0.0.8
 
 => Common does not exist anymore

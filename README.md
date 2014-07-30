@@ -7,15 +7,17 @@
 4. [Usage - The classes,roles and profiles available for configuration ](#usage)
     * [Classes](#classes)
     * [Roles](#roles)
-        * [Role galaxy-roles-profiles::role::basic](#role-galaxy_roles_profilesrolebasic)
-        * [Role galaxy-roles-profiles::role::multicore](#role-galaxy_roles_profilesrolemulticore)
-        * [Role galaxy-roles-profiles::role::multicore-database](#role-galaxy_roles_profilesrolemulticore-database)
+        * [Role galaxy-roles-profiles::role::galaxy-sqlite](#role-galaxy_roles_profilesrolegalaxysqlite)
+        * [Role galaxy_roles_profiles::role::galaxy-postgresql](#role-galaxy_roles_profilesrolegalaxypostgresql)
+        * [Role galaxy-roles-profiles::role::galaxy-apache-sqlite](#role-galaxy_roles_profilesrolegalaxyapachessqlite)
+        * [Role galaxy-roles-profiles::role::galaxy-apache-postgresql](#role-galaxy_roles_profilesrolegalaxyapachepostgresql)
     * [Profiles](#profiles)
-        * [Profile galaxy-roles-profiles::profile::base](#profile-galaxy_roles_profilesprofilebase)
+        * [Profile galaxy-roles-profiles::profile::sqlite](#profile-galaxy_roles_profilesprofilesqlite)
         * [Profile galaxy-roles-profiles::profile::common](#profile-galaxy_roles_profilesprofilecommon)
-        * [Profile galaxy-roles-profiles::profile::database](#profile-galaxy_roles_profilesprofiledatabase)
-        * [Profile galaxy-roles-profiles::profile::webapp](#profile-galaxy_roles_profileprofilewebapp)
-5. [Deal with Hiera configuration files](#hiera)   
+        * [Profile galaxy-roles-profiles::profile::pgsql](#profile-galaxy_roles_profilesprofilepgsql)
+        * [Profile galaxy-roles-profiles::profile::apache](#profile-galaxy_roles_profileprofileapache)
+        * [Profile galaxy_roles_profile::profile::galaxy](#profile-galaxy_roles_profileprofilegalaxy)
+5. [Deal with Hiera configuration files](#hiera)
 6. [Github Projects](#github-projects)
 7. [Contacts](#contact)
 8. [Galaxy Project](#galaxy-project)
@@ -57,50 +59,54 @@ How to install existing role:
 
 ##Usage
 ###Classes
-###Roles 
+###Roles
 Roles contains only one or many profiles.
  
-####Role: `galaxy_roles_profiles::role::basic`
-Galaxy in basic config. It means with SQLite and only one core.
+####Role: `galaxy_roles_profiles::role::galaxy-sqlite`
+Galaxy with SQLite.
 
 ```
-	puppet apply -e "include galaxy_roles_profiles::role::basic"
+	puppet apply -e "include galaxy_roles_profiles::role::galaxy-sqlite"
 ```
 
-####Role: `galaxy_roles_profiles::role::multicore`
-Galaxy in load-balancing mode with SQLite.
+####Role `galaxy_roles_profiles::role::galaxy-postgresql`
+Galaxy with PostgreSQL
+```
+	puppet apply -e "include galaxy_roles_profiles::role::galaxy-postgresql"
+```
+
+####Role: `galaxy_roles_profiles::role::galaxy-apache-sqlite`
+Galaxy with SQLite and Apache.
 
 ```
-	puppet apply -e "include galaxy-roles-profiles::role::multicore"
+	puppet apply -e "include galaxy-roles-profiles::role::galaxy-apache-sqlite"
 ```
-####Role: `galaxy_roles_profiles::role::multicore-database`
-Galaxy in load-balancing mode with PostgreSQL.
+####Role: `galaxy_roles_profiles::role::galaxy-apache-sqlite-database`
+Galaxy with PostgreSQL and Apache.
 
 ```
-	puppet apply -e "include galaxy_roles_profiles::role::multicore-database"
+	puppet apply -e "include galaxy_roles_profiles::role::galaxy-apache-sqlite-postgresql"
 ```
 
 ###Profiles
 Profiles contains one or many building-block (for example galaxy::universe). One profile is one technology layer.
 
-####Profile: `galaxy_roles_profiles::profile::base`
-This profile install Galaxy and make the first run of Galaxy
+####Profile: `galaxy_roles_profiles::profile::sqlite`
+This profile call galaxy::create_db.
 
 ####Profile: `galaxy_roles_profiles::profile::common`
-This profile manage toolshed_conf, job_conf and universe_wsgi.ini. Actually each configuration is written right here with if and elsif statement.
-This profile is parametrable: $config for choose wich config you want ( onecore | multicore | multicore-database).
-There are lot of parameters set by Hiera wich are used in galaxy::universe ( see 6.Hiera and https://github.com/puppet-galaxy/puppet-galaxy).
-In the future, each configuration ( one config = one universe ) will be separated from this profile.
+This profile install Galaxy using base blocks from urgi/galaxy module.
+This profile manage toolshed_conf, job_conf and universe_wsgi.ini.
+You can change your config using Hiera and write  in .yaml what you want.
 
-####Profile: `galaxy_roles_profiles::profile::database`
+####Profile: `galaxy_roles_profiles::profile::postgresql`
 This profile install packages for postgresql, and configure it for add a new database for galaxy.
 This uses the puppetlabs/postgresql module.
-It's a very basic use of the postgresql module : create an user, a password and a database.
 These are set in a Hiera file. ( see 6.Hiera ).
 Further information available at : https://forge.puppetlabs.com/puppetlabs/postgresql .
 
-####Profile: `galaxy_roles_profiles::profile::webapp`
-This profile install and configure apache to deal with Galaxy in load-balancing mode.
+####Profile: `galaxy_roles_profiles::profile::apache`
+This profile install and configure apache to deal with Galaxy.
 This uses puppetlabs/apache module to install apache, create a Virtual Host and load the needed mods
 To deal with balancer configuration file, we write a template ( balancer_galaxy.conf.erb ) and a class `galaxy-roles-profiles::balancer-config`
 Further information available at : https://forge.puppetlabs.com/puppetlabs/apache .
@@ -108,7 +114,7 @@ Further information available at : https://forge.puppetlabs.com/puppetlabs/apach
 ##Hiera
 First you have to edit the hiera.yaml in /etc/hiera.yaml and in /etc/puppet/hiera.yaml (for example delete each lines in hierarchy and add "common" ).
 
-Next you have to have one hiera file in /var/lib/hiera/ ( for example common.yaml) 
+Next you have to have one hiera file in /var/lib/hiera/ ( for example common.yaml)
 
 You can use a sample of common.yaml and modify it as you want :
 
@@ -117,6 +123,8 @@ $ cp /etc/puppet/modules/galaxy_roles_profiles/examples/common.yaml /var/lib/hie
 $ cp ../galaxy_roles_profiles/examples/common.yaml /var/lib/hiera -> if you use the repo from GitHub directly.
 
 More details on Hiera at : http://docs.puppetlabs.com/hiera/1/
+
+More details on automatic parameter lookup :  http://docs.puppetlabs.com/hiera/1/puppet.html#automatic-parameter-lookup
 
 ##Github projects
 Projects for base blocks and roles+profiles are hosted on github:

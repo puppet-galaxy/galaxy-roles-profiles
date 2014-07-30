@@ -1,5 +1,5 @@
 name    'urgi-galaxy_roles_profiles'
-version '0.0.8'
+version '0.0.9'
 source 'https://github.com/puppet-galaxy/galaxy-roles-profiles'
 author 'urgi'
 license 'Apache License, Version 2.0'
