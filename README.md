@@ -3,7 +3,7 @@
 1. [Overview](#overview)
 2. [Module Description](#module-description)
 3. [Setup](#setup)
-    * [First step with Puppet Galaxy](#first-step)
+    * [First step with Galaxy Roles Profiles](#first-step)
 4. [Usage - The classes,roles and profiles available for configuration ](#usage)
     * [Classes](#classes)
     * [Roles](#roles)
@@ -81,7 +81,7 @@ Galaxy with SQLite and Apache.
 ```
 	puppet apply -e "include galaxy-roles-profiles::role::galaxy-apache-sqlite"
 ```
-####Role: `galaxy_roles_profiles::role::galaxy-apache-sqlite-database`
+####Role: `galaxy_roles_profiles::role::galaxy-apache-sqlite-postgresql`
 Galaxy with PostgreSQL and Apache.
 
 ```
