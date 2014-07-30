@@ -85,7 +85,7 @@ Galaxy with SQLite and Apache.
 Galaxy with PostgreSQL and Apache.
 
 ```
-	puppet apply -e "include galaxy_roles_profiles::role::galaxy-apache-sqlite-postgresql"
+	puppet apply -e "include galaxy_roles_profiles::role::galaxy-apache-postgresql"
 ```
 
 ###Profiles
