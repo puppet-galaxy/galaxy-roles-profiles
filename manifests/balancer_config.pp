@@ -4,13 +4,7 @@
 #
 # === Parameters
 #
-# [*$directory*]: where we want to write balancer_galaxy.conf
 # [*$webworker_starting_port_number*]: port for the first web worker
-#
-# Parameters set by Hiera:
-#
-# [*galaxy-roles-profiles::number_of_workers*]
-# Set the number of web workers
 #
 #==== Examples
 #
@@ -26,10 +20,14 @@
 # Copyright 2014, unless otherwise noted.
 #
 class galaxy_roles_profiles::balancer_config(
-  $directory = '/etc/apache2/conf.d/',
   $webworker_starting_port_number= 8000,
-){
-  $number_of_web_workers_array = range('0', -1+hiera('galaxy_roles_profiles::number_of_workers'))
+)
+{ 
+  case $::osfamily{
+    'RedHat':  { $directory = '/etc/httpd/conf.d'}
+    'Debian': { $directory = '/etc/apache2/conf.d'}
+  }
+  $number_of_web_workers_array = range('0', -1+$galaxy::universe::number_of_web_workers)
   file { "$directory/balancer_galaxy.conf":
     content => template('galaxy_roles_profiles/balancer_galaxy.conf.erb'),
   }
