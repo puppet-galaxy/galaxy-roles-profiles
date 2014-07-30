@@ -27,6 +27,8 @@ class galaxy_roles_profiles::profile::apache(
   include apache::mod::proxy
   include apache::mod::proxy_balancer
   include apache::mod::rewrite
+# include  apache::mod::slotmem_shm
+# include apache::mod::lbmethod_byrequests
   if $galaxy::universe::wk_config{
     include galaxy_roles_profiles::balancer_config
     apache::vhost{ 'galaxy':
@@ -54,7 +56,7 @@ class galaxy_roles_profiles::profile::apache(
       rewrites =>
       [
         {
-          comment      => 'Rules for Galaxy in loadbalancing mode',
+          comment      => 'Rules for Galaxy in oncecore mode',
           rewrite_rule => '^(.*) http://localhost:8080$1 [P]',
         },
       ]
