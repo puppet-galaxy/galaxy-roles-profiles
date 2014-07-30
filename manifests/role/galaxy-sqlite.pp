@@ -1,10 +1,10 @@
 # == Class galaxy-roles-profiles::role::galaxy-sqlite
-# This role create one instance of galaxy with basic configuration.
-# That means Galaxy runs with only one core and with SQLite.
+#
+# This role create one instance of galaxy with sqlite
 #
 # === Example
 #
-# include galaxy-roles-profiles::role::basic
+# include galaxy-roles-profiles::role::galaxy-sqlite
 #
 # === Authors
 #

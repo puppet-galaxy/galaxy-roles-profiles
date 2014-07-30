@@ -4,7 +4,7 @@
 # -Manage apache's configuration
 #
 # === Parameters
-# [*galaxy_roles_profiles::profile::apache::port*]
+# [*galaxy_roles_profiles::profile::port_to_listen*]
 # Set the port wich you want to use for your Galaxy
 # ==== Examples
 #
@@ -47,10 +47,6 @@ class galaxy_roles_profiles::profile::apache(
       ]
     }
   }
-
-  
-  
-  
   else{
     apache::vhost{ 'galaxy':
       port     => $port_to_listen,

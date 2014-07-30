@@ -1,19 +1,19 @@
-# == Class: galaxy_roles_profiles::profile::database
+# == Class: galaxy_roles_profiles::profile::pgsql
 #
-# Database profile to build one database for PostgreSQL.
-# See https://forge.puppetlabs.com/puppetlabs/postgresql/3.3.3 for more information
+# This class install postgresql.
+# It creates a postgresql database
+# And upgrade the galaxy's database.
+# 
+# === Parameters
 #
-# === Parameter
-#
-# All are sets by Hiera
-# [*galaxy_roles_profiles::profile::db_username*]
+# [*galaxy_roles_profiles::profile::pgsql::db_user*]
 # Username to connect to database with. It is recommend you create a separate user for galaxy. We recommend use of the puppetlabs database modules to manage database users.
 #
-# [*galaxy_roles_profiles::profile::db_password*]
+# [*galaxy_roles_profiles::profile::pgsql::db_pass*]
 # Password to connect to database with.
 #
-# [*galaxy_roles_profiles::profile::db_database*]
-# Name of the database (schema in postgres, database name in mysql).
+# [*galaxy_roles_profiles::profile::pgsql::db_name*]
+# Name of the database (schema in postgres).
 #
 # === Authors
 #
