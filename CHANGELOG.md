@@ -1,4 +1,4 @@
-#2014-30-08 Release 0.0.9
+#2014-31-08 Release 0.0.9
 => Common returns. It downloads galaxy and create an user, a directory and manages config files.
 
 =>Roles : galaxy-sqlite, galaxy-postgresql , galaxy-apache-sqlite, galaxy-apache-postgresql
