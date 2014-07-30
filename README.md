@@ -7,10 +7,10 @@
 4. [Usage - The classes,roles and profiles available for configuration ](#usage)
     * [Classes](#classes)
     * [Roles](#roles)
-        * [Role galaxy-roles-profiles::role::galaxy-sqlite](#role-galaxy_roles_profilesrolegalaxysqlite)
-        * [Role galaxy_roles_profiles::role::galaxy-postgresql](#role-galaxy_roles_profilesrolegalaxypostgresql)
-        * [Role galaxy-roles-profiles::role::galaxy-apache-sqlite](#role-galaxy_roles_profilesrolegalaxyapachessqlite)
-        * [Role galaxy-roles-profiles::role::galaxy-apache-postgresql](#role-galaxy_roles_profilesrolegalaxyapachepostgresql)
+        * [Role galaxy-roles-profiles::role::galaxy-sqlite](#role-galaxy_roles_profilesrolegalaxy-sqlite)
+        * [Role galaxy_roles_profiles::role::galaxy-postgresql](#role-galaxy_roles_profilesrolegalaxy-postgresql)
+        * [Role galaxy-roles-profiles::role::galaxy-apache-sqlite](#role-galaxy_roles_profilesrolegalaxy-apaches-sqlite)
+        * [Role galaxy-roles-profiles::role::galaxy-apache-postgresql](#role-galaxy_roles_profilesrolegalaxy-apache-postgresql)
     * [Profiles](#profiles)
         * [Profile galaxy-roles-profiles::profile::sqlite](#profile-galaxy_roles_profilesprofilesqlite)
         * [Profile galaxy-roles-profiles::profile::common](#profile-galaxy_roles_profilesprofilecommon)
@@ -110,6 +110,9 @@ This profile install and configure apache to deal with Galaxy.
 This uses puppetlabs/apache module to install apache, create a Virtual Host and load the needed mods
 To deal with balancer configuration file, we write a template ( balancer_galaxy.conf.erb ) and a class `galaxy-roles-profiles::balancer-config`
 Further information available at : https://forge.puppetlabs.com/puppetlabs/apache .
+
+####Profile: `galaxy_roles_profiles::profile::galaxy`
+This profile call galaxy::service to start galaxy as service.
 
 ##Hiera
 First you have to edit the hiera.yaml in /etc/hiera.yaml and in /etc/puppet/hiera.yaml (for example delete each lines in hierarchy and add "common" ).
