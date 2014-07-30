@@ -9,7 +9,7 @@
     * [Roles](#roles)
         * [Role galaxy-roles-profiles::role::galaxy-sqlite](#role-galaxy_roles_profilesrolegalaxy-sqlite)
         * [Role galaxy_roles_profiles::role::galaxy-postgresql](#role-galaxy_roles_profilesrolegalaxy-postgresql)
-        * [Role galaxy-roles-profiles::role::galaxy-apache-sqlite](#role-galaxy_roles_profilesrolegalaxy-apaches-sqlite)
+        * [Role galaxy-roles-profiles::role::galaxy-apache-sqlite](#role-galaxy_roles_profilesrolegalaxy-apache-sqlite)
         * [Role galaxy-roles-profiles::role::galaxy-apache-postgresql](#role-galaxy_roles_profilesrolegalaxy-apache-postgresql)
     * [Profiles](#profiles)
         * [Profile galaxy-roles-profiles::profile::sqlite](#profile-galaxy_roles_profilesprofilesqlite)
@@ -31,7 +31,6 @@ This module contains roles and profiles for a Galaxy server configuration manage
 It uses base blocks hosted in the Galaxy module: https://forge.puppetlabs.com/urgi/galaxy
 
 ##Setup
-
 **what this module affect:**
 * Create a new user, galaxy
 * Create directories
@@ -81,11 +80,11 @@ Galaxy with SQLite and Apache.
 ```
 	puppet apply -e "include galaxy-roles-profiles::role::galaxy-apache-sqlite"
 ```
-####Role: `galaxy_roles_profiles::role::galaxy-apache-sqlite-postgresql`
+####Role: `galaxy_roles_profiles::role::galaxy-apache-postgresql`
 Galaxy with PostgreSQL and Apache.
 
 ```
-	puppet apply -e "include galaxy_roles_profiles::role::galaxy-apache-postgresql"
+	puppet apply -e "include galaxy_roles_profiles::role::galaxy-apache-sqlite-postgresql"
 ```
 
 ###Profiles
