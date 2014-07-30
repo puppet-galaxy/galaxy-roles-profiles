@@ -27,8 +27,8 @@ class galaxy_roles_profiles::profile::apache(
   include apache::mod::proxy
   include apache::mod::proxy_balancer
   include apache::mod::rewrite
-# include  apache::mod::slotmem_shm
-# include apache::mod::lbmethod_byrequests
+  apache::mod { 'slotmem_shm':}
+  apache::mod { 'lbmethod_byrequests':}
   if $galaxy::universe::wk_config{
     include galaxy_roles_profiles::balancer_config
     apache::vhost{ 'galaxy':
