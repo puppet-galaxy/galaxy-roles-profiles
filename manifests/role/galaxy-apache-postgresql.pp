@@ -24,5 +24,4 @@ class galaxy_roles_profiles::role::galaxy-apache-postgresql{
   }->
   class { 'galaxy_roles_profiles::profile::galaxy':
   }
-}:q
-i
+}
