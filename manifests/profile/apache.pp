@@ -27,8 +27,10 @@ class galaxy_roles_profiles::profile::apache(
   include apache::mod::proxy
   include apache::mod::proxy_balancer
   include apache::mod::rewrite
+  if $operatingsystem == Ubuntu and $operatingsystemrelease == 14.04{
   apache::mod { 'slotmem_shm':}
   apache::mod { 'lbmethod_byrequests':}
+  }
   if $galaxy::universe::wk_config{
     include galaxy_roles_profiles::balancer_config
     apache::vhost{ 'galaxy':
