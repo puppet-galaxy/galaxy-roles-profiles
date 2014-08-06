@@ -27,4 +27,24 @@ class galaxy_roles_profiles::profile::common {
   }
   include galaxy::common_startup
   include galaxy::manage_tools
+  $directory = '/home/galaxy/galaxy-dist'
+  $paths= [
+          "$directory/database/files",
+          "$directory/database/job_working_directory",
+          "$directory/database/pbs",
+          "$directory/database/tmp",
+          "$directory/database/ftp",
+          "$directory/database/compiled_templates",
+          "$directory/database/whoosh_indexes",
+          "$directory/database/object_store_object",
+          "$directory/static/genetrack/plots",
+          "$directory/tool-data/shared/jars",
+          ]
+      file  {$paths:
+        require => Class['galaxy::install'],
+        ensure  => directory,
+        owner   => 'galaxy',
+        group   => 'galaxy',
+        mode    => 'a=r+w+x'
+      }
 }
