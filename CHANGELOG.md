@@ -1,3 +1,7 @@
+#2014-07-0.8 Release 1.0.0
+
+=> Include galaxy::directories in common.pp to fixes somes bug at the initial run.
+
 #2014-31-07 Release 0.0.9
 => Common returns. It downloads galaxy and create an user, a directory and manages config files.
 
