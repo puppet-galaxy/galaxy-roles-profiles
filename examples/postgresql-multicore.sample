@@ -1,0 +1,27 @@
+# Sample for Hiera config.
+# Ready to use:
+# -cp in the /var/lib/hiera/
+# -modify hiera.yaml
+#
+# galaxy::install::galaxy_repository : 'http://localhost:9000/galaxy-dist/'
+#
+galaxy::universe::create_user : true
+galaxy::universe::home_directory : '/home/galaxy'
+galaxy::universe::app_directory : '/home/galaxy/galaxy-dist'
+galaxy::universe::galaxy_branch : 'stable'
+galaxy::universe::custom_toolsheds : []
+galaxy::universe::id_secret : 'secret'
+galaxy::universe::require_login : false
+#
+galaxy::universe::wk_config: true
+galaxy::universe::number_of_background_workers: 2
+galaxy::universe::number_of_web_workers : 2
+galaxy::job_conf::number_of_background_workers: 2
+#
+galaxy::universe::db_connection : 'sqlite:///./database/puppet.sqlite?isolation_level=IMMEDIATE'
+#
+galaxy::universe::db_connection : 'postgresql://galaxy:galaxy@localhost:5432/dbgalaxy'
+galaxy::universe::db_driver : 'postgresql'
+galaxy_roles_profiles::profile::pgsql::db_name : 'dbgalaxy'
+galaxy_roles_profiles::profile::pgsql::db_user : 'galaxy'
+galaxy_roles_profiles::profile::pgsql::db_pass : 'galaxy'
