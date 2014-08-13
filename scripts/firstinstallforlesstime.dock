@@ -1,0 +1,4 @@
+FROM wheezy-puppet
+
+ADD ./global.yaml /var/lib/hiera/
+RUN puppet apply -e "include galaxy_roles_profiles::role::galaxy-sqlite" --debug

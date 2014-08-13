@@ -38,39 +38,38 @@ IPVM_array[3]=$(sudo docker inspect galaxy-apo | grep IPAddress | cut -d\" -f4)
 ##### TEST #####
 ####        ####
 ################
-
 reportGalaxyService()
 {
     if [ $(curl $1:$2 | grep -c welcome ) -ge 1 ]
         then
-        echo $1":"$2"is working" >> $DIRVM/rapport-$GITLOG
+        echo $1":"$2" is working" >> $DIRVM/rapport-$GITLOG
     else
-        echo $1":"$2"is broken" >> $DIRVM/rapport-$GITLOG
+        echo $1":"$2" is broken" >> $DIRVM/rapport-$GITLOG
     fi
 }
 #Attendre que tout soit démarrer
-sleep 5m
-
-for i in IPVM_array
+#sleep 5m
+indice=0
+for i in ${IPVM_array[@]}
     do
-        if [i eq 0]
+        if [$indice eq 0]
             then
             echo "<< GALAXY-SQLITE Onecore >>" >> $DIRVM/rapport-$GITLOG
-            reportGalaxyService ${IPVM[i]} 8080
-        elif [i eq 1]
+            reportGalaxyService $i 8080
+        elif [$indice eq 1]
             then
             echo "<< GALAXY-APACHE-SQLITE Onecore >>" >> $DIRVM/rapport-$GITLOG
-            reportGalaxyService ${IPVM[i]} 8080
-            reportGalaxyService ${IPVM[i]} 8081
-        elif [i eq 2]
+            reportGalaxyService $i 8080
+            reportGalaxyService $i 8081
+        elif [$indice eq 2]
             then
             echo "<< GALAXY-POSTGRESQL Onecore >>" >> $DIRVM/rapport-$GITLOG
-            reportGalaxyService ${IPVM[i]} 8080
+            reportGalaxyService $i 8080
         else
-            then
             echo "<< GALAXY-APACHE-POSTGRESQL Onecore >>" >> $DIRVM/rapport-$GITLOG
-            reportGalaxyService ${IPVM[i]} 8080
-            reportGalaxyService ${IPVM[i]} 8081
+            reportGalaxyService $i 8080
+            reportGalaxyService $i 8081
         fi
+        indice=`expr $indice + 1 `
 done
 exit 0

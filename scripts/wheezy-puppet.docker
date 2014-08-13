@@ -1,0 +1,13 @@
+FROM tianon/debian:wheezy
+
+RUN apt-get -y update
+RUN apt-get -y upgrade
+RUN apt-get -y install apt-utils
+RUN apt-get -y install wget
+RUN wget https://apt.puppetlabs.com/puppetlabs-release-wheezy.deb --no-check-certificate
+RUN dpkg -i puppetlabs-release-wheezy.deb
+RUN apt-get -y update
+RUN apt-get -y install puppet
+RUN puppet resource package puppet ensure=latest
+RUN apt-get -y install ca-certificates
+RUN puppet module install urgi-galaxy_roles_profiles
