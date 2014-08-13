@@ -1,5 +1,5 @@
 # == Class galaxy_roles_profiles::profile::galaxy
-#############
+#
 # This class calls galaxy::service to start galaxy as a service.
 #
 # ==== Examples
