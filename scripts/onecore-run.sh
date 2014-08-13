@@ -48,24 +48,26 @@ reportGalaxyService()
     fi
 }
 #Attendre que tout soit démarrer
-#sleep 5m
+echo "Wait for all instances are serving~10min "
+sleep 10m
 indice=0
 for i in ${IPVM_array[@]}
     do
-        if [$indice eq 0]
+        if [ $indice -eq 0 ]
             then
             echo "<< GALAXY-SQLITE Onecore >>" >> $DIRVM/rapport-$GITLOG
             reportGalaxyService $i 8080
-        elif [$indice eq 1]
+        elif [ $indice -eq 1 ]
             then
             echo "<< GALAXY-APACHE-SQLITE Onecore >>" >> $DIRVM/rapport-$GITLOG
             reportGalaxyService $i 8080
             reportGalaxyService $i 8081
-        elif [$indice eq 2]
+        elif [ $indice -eq 2 ]
             then
             echo "<< GALAXY-POSTGRESQL Onecore >>" >> $DIRVM/rapport-$GITLOG
             reportGalaxyService $i 8080
-        else
+        elif [ $indice -eq 3 ]
+            then
             echo "<< GALAXY-APACHE-POSTGRESQL Onecore >>" >> $DIRVM/rapport-$GITLOG
             reportGalaxyService $i 8080
             reportGalaxyService $i 8081
