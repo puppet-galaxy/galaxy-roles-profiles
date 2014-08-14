@@ -74,4 +74,6 @@ for i in ${IPVM_array[@]}
         fi
         indice=`expr $indice + 1 `
 done
+sudo docker stop $(docker ps -a -q)
+sudo docker rm $(docker ps -a -q)
 exit 0
