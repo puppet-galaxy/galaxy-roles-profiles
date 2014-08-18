@@ -6,7 +6,6 @@ GITLOG=$(git log --pretty=format:'%h' -n 1)
 ################ Fonction pour les tests
 reportGalaxyService()
 {
-    sleep 2m
     if [ $(curl $1:$2 | grep -c welcome ) -ge 1 ]
     then
         echo $1":"$2" is working" >> $3/rapport-$GITLOG
@@ -35,6 +34,7 @@ buildGalaxyapachesqlite ()
         sudo docker run -d --name galaxy-so -e "ROLE=galaxy-sqlite" -e "GLOG=paster.log" galaxy/osqlite:$GITLOG
         IPVM=$(sudo docker inspect galaxy-so | grep IPAddress | cut -d\" -f4)
         echo "<< GALAXY-SQLITE Onecore >>" >> $WORKINGDIR/rapport-$GITLOG
+        sleep 2m
         reportGalaxyService $IPVM 8080 $WORKINGDIR
 
     elif [ $CHOIX_TEST = "galaxy-apache-sqlite" ]
@@ -43,6 +43,7 @@ buildGalaxyapachesqlite ()
         sudo docker run -d --name galaxy-aso -e "ROLE=galaxy-apache-sqlite" -e "GLOG=paster.log" galaxy/osqlite:$GITLOG
         IPVM=$(sudo docker inspect galaxy-aso | grep IPAddress | cut -d\" -f4)
         echo "<< GALAXY-APACHE-SQLITE Onecore >>" >> $WORKINGDIR/rapport-$GITLOG
+        sleep 2m
         reportGalaxyService $IPVM 8080 $WORKINGDIR
         reportGalaxyService $IPVM 8081 $WORKINGDIR
 
@@ -52,6 +53,7 @@ buildGalaxyapachesqlite ()
         sudo docker run -d --name galaxy-po -e "ROLE=galaxy-postgresql" -e "GLOG=paster.log" galaxy/opostgres:$GITLOG
         IPVM=$(sudo docker inspect galaxy-po | grep IPAddress | cut -d\" -f4)
         echo "<< GALAXY-POSTGRESQL Onecore >>" >> $WORKINGDIR/rapport-$GITLOG
+        sleep 4m
         reportGalaxyService $IPVM 8080 $WORKINGDIR
 
     elif [ $CHOIX_TEST = "galaxy-apache-postgresql" ]
@@ -60,6 +62,7 @@ buildGalaxyapachesqlite ()
         sudo docker run -d --name galaxy-apo -e "ROLE=galaxy-apache-postgresql" -e "GLOG=paster.log" galaxy/opostgres:$GITLOG
         IPVM=$(sudo docker inspect galaxy-apo | grep IPAddress | cut -d\" -f4)
         echo "<< GALAXY-APACHE-POSTGRESQL Onecore >>" >> $WORKINGDIR/rapport-$GITLOG
+        sleep 4m
         reportGalaxyService $IPVM 8080 $WORKINGDIR
         reportGalaxyService $IPVM 8081 $WORKINGDIR
     fi
