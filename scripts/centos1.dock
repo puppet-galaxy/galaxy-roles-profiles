@@ -1,0 +1,6 @@
+FROM caligin/centos-puppetready
+
+RUN puppet module install urgi-galaxy_roles_profiles
+RUN cp /etc/hiera.yaml /etc/puppet/
+ADD ./global.yaml /var/lib/hiera/
+RUN  puppet apply -e "include galaxy_roles_profiles::role::galaxy-sqlite"

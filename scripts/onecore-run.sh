@@ -21,7 +21,7 @@ buildGalaxysqlite()
 }
 
 #BUILD postgresql-onecore +/- apache
-buildGalaxyapachesqlite ()
+buildGalaxypostgresql ()
 {
     cp $WORKINGDIR/galaxy-roles-profiles/examples/postgresql-onecore.sample $WORKINGDIR/global.yaml
     sudo docker build -t galaxy/opostgres:$GITLOG $WORKINGDIR
@@ -49,7 +49,7 @@ buildGalaxyapachesqlite ()
 
     elif [ $CHOIX_TEST = "galaxy-postgresql" ]
     then
-        buildGalaxyapachesqlite
+        buildGalaxypostgresql
         sudo docker run -d --name galaxy-po -e "ROLE=galaxy-postgresql" -e "GLOG=paster.log" galaxy/opostgres:$GITLOG
         IPVM=$(sudo docker inspect galaxy-po | grep IPAddress | cut -d\" -f4)
         echo "<< GALAXY-POSTGRESQL Onecore >>" >> $WORKINGDIR/rapport-$GITLOG
@@ -58,7 +58,7 @@ buildGalaxyapachesqlite ()
 
     elif [ $CHOIX_TEST = "galaxy-apache-postgresql" ]
     then
-        buildGalaxyapachesqlite
+        buildGalaxypostgresql
         sudo docker run -d --name galaxy-apo -e "ROLE=galaxy-apache-postgresql" -e "GLOG=paster.log" galaxy/opostgres:$GITLOG
         IPVM=$(sudo docker inspect galaxy-apo | grep IPAddress | cut -d\" -f4)
         echo "<< GALAXY-APACHE-POSTGRESQL Onecore >>" >> $WORKINGDIR/rapport-$GITLOG

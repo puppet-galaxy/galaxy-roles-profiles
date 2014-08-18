@@ -1,0 +1,13 @@
+FROM centos-test
+ADD ./global.yaml /var/lib/hiera/
+RUN mkdir /home/git-repo
+RUN mkdir /home/git-repo/galaxy/
+RUN mkdir /home/git-repo/galaxy_roles_profiles/
+ADD ./galaxy-roles-profiles /home/git-repo/galaxy_roles_profiles/
+ADD ./puppet-galaxy /home/git-repo/galaxy/
+RUN cp -rf /home/git-repo/galaxy /etc/puppet/modules/
+RUN cp -rf /home/git-repo/galaxy_roles_profiles /etc/puppet/modules/
+ENV $ROLE galaxy-sqlite
+ENV $GLOG paster.log
+CMD puppet apply -e "include galaxy_roles_profiles::role::`echo $ROLE`" && tail -f /home/galaxy/galaxy-dist/$GLOG
+EXPOSE 8000:9000
