@@ -27,7 +27,7 @@ class galaxy_roles_profiles::balancer_config(
     'RedHat':  { $directory = '/etc/httpd/conf.d'}
     'Debian': { $directory = '/etc/apache2/conf.d'}
   }
-  $number_of_web_workers_array = range('0', -1+$galaxy::universe::number_of_web_workers)
+  $number_of_web_workers_array = range('0', -1+$galaxy::galaxy_ini::number_of_web_workers)
   file { "$directory/balancer_galaxy.conf":
     content => template('galaxy_roles_profiles/balancer_galaxy.conf.erb'),
   }

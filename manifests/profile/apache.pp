@@ -31,7 +31,7 @@ class galaxy_roles_profiles::profile::apache(
   apache::mod { 'slotmem_shm':}
   apache::mod { 'lbmethod_byrequests':}
   }
-  if $galaxy::universe::wk_config{
+  if $galaxy::galaxy_ini::wk_config{
     include galaxy_roles_profiles::balancer_config
     apache::vhost{ 'galaxy':
       port     => $port_to_listen,

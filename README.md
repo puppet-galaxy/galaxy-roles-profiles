@@ -88,14 +88,14 @@ Galaxy with PostgreSQL and Apache.
 ```
 
 ###Profiles
-Profiles contains one or many building-block (for example galaxy::universe). One profile is one technology layer.
+Profiles contains one or many building-block (for example galaxy::galaxy_ini). One profile is one technology layer.
 
 ####Profile: `galaxy_roles_profiles::profile::sqlite`
 This profile call galaxy::create_db.
 
 ####Profile: `galaxy_roles_profiles::profile::common`
 This profile install Galaxy using base blocks from urgi/galaxy module.
-This profile manage toolshed_conf, job_conf and universe_wsgi.ini.
+This profile manage toolshed_conf, job_conf and galaxy.ini.
 You can change your config using Hiera and write  in .yaml what you want.
 
 ####Profile: `galaxy_roles_profiles::profile::postgresql`
